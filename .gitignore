@@ -70,6 +70,9 @@ yarn-debug.log*
 /storage/*
 !/storage/.keep
 
+# dotenv environment variables file
+.env
+
 # End of https://www.gitignore.io/api/rails
 
 /public/packs
