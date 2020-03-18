@@ -1,9 +1,11 @@
 <h2>さらにエリアで絞り込む</h2>
-<%= form_with(url: shops_path, local: true, method: :get) do |f| %>
-  <%= f.label :エリアS %>
-  <%= f.hidden_field :pref_code, value: @pref_code %>
-  <%= f.select :areacode_s, options_for_select(@areas.map{ |area| [area["areaname_s"], area["areacode_s"]]}) %><br />
-  <%= f.submit '検索' %>
+<% if @areas.present? %>
+  <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
+    <%= f.label :エリアS %>
+    <%= f.hidden_field :pref_code, value: @pref_code %>
+    <%= f.select :areacode_s, options_for_select(@areas.map{ |area| [area["areaname_s"], area["areacode_s"]]}) %><br />
+    <%= f.submit '検索' %>
+  <% end %>
 <% end %>
 
 <h2>検索結果：<%= @total_count %>件</h2>
