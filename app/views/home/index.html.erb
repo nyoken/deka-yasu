@@ -1,16 +1,26 @@
-<h1>電子マネーが使えるお店探し！</h1>
-<%= form_with(url: shops_path, local: true, method: :get) do |f| %>
-  <%= f.label :都道府県 %>
-  <%= f.select :pref_code, options_for_select(@prefs.map{ |pref| [pref["pref_name"], pref["pref_code"]]}) %><br />
-  <%= f.submit '検索' %>
-<% end %>
+<div class="home">
+  <div class="home__bg-image">
+    <h2>電子マネーが使えるお店探し<br />
+    <span>ペイつか！</span></h2>
+  </div>
 
-<div class="album py-5 bg-light">
   <div class="container">
-    <div class="row">
-      <div class="col-md-4">
-        <%= image_tag '/assets/home/japan.jpg', alt: '日本地図' %>
+    <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
+      <div class="row">
+        <div class="col-md-4">
+          <%= image_tag '/assets/home/japan.jpg', alt: '日本地図' %>
+          <%= f.label :都道府県 %>
+          <%= f.select :pref_code, options_for_select(@prefs.map{ |pref| [pref["pref_name"], pref["pref_code"]]}, selected: "なし") %><br />
+        </div>
+        <div class="col-md-4">
+          <%= image_tag '/assets/home/pizza.jpg', alt: 'ピザ' %>
+          <%= f.label :カテゴリー %>
+          <%= f.select :category_code, options_for_select(@categories.map{ |category| [category["category_l_name"], category["category_l_code"]]}) %><br />
+        </div>
+        <div class="col-md-4">
+          <%= f.submit '検索' %>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

@@ -1,0 +1,30 @@
+header {
+  .navbar {
+    background-color: #ff3232;
+
+    a {
+      font-weight: bold;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    .navbar-nav {
+      .nav-link {
+        opacity: 0.9;
+      }
+    }
+
+    .navbar-toggler {
+      border: none;
+
+      .icon-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        border-radius: 1px;
+        margin: 4px 0;
+        background-color: #fff;
+      }
+    }
+  }
+}

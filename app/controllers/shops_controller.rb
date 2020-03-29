@@ -8,7 +8,8 @@ class ShopsController < ApplicationController
     query_items = {
       "keyid": ENV['GURUNAVI_API_KEY'],
       "e_money": 1,
-      "pref": params[:pref_code]
+      "pref": params[:pref_code],
+      "category_l": params[:category_code]
     }
 
     if params[:areacode_s]

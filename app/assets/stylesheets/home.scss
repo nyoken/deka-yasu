@@ -1,3 +1,36 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+.home {
+  h2 {
+    font-size: 28px;
+    margin-left: 10px;
+
+    span {
+      font-size: 50px;
+      display: block;
+      text-align: center;
+      font-weight: bold;
+    }
+  }
+
+  form {
+    img {
+      width: 100%;
+      height: 300px;
+    }
+  }
+
+  &__bg-image {
+    background-image: url(/assets/home/top-bg.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 640px;
+    display: flex;
+    align-items: center;
+
+    @media screen and (max-width: 767px) {
+      background-image: url(/assets/home/backgraund_sp@3x-min.png);
+      margin-top: 50px;
+      padding-bottom: 82%;
+    }
+  }
+}
