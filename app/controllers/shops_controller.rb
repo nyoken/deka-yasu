@@ -21,6 +21,8 @@ class ShopsController < ApplicationController
     rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?" + query
     parse_json(rest_url)
     @rests = @result["rest"]
-    @total_count = @result["total_hit_count"]
+    @total_hit_count = @result["total_hit_count"]
+    @hit_per_page = @result["hit_per_page"]
+    @page_offset = @result["page_offset"]
   end
 end
