@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.7'
 # 環境変数定義用
 gem 'dotenv-rails'
 
+gem 'kaminari'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
