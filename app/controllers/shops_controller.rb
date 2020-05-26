@@ -27,7 +27,10 @@ class ShopsController < ApplicationController
     @total_hit_count = @result["total_hit_count"]
     @rests = Kaminari.paginate_array(@rests, total_count: @total_hit_count).page(params[:page]).per(20)
 
-    @hit_per_page = @result["hit_per_page"]
-    @page_offset = @result["page_offset"]
+    hit_per_page = @result["hit_per_page"]
+    page_offset = @result["page_offset"]
+
+    @start_count = hit_per_page * (page_offset - 1) + 1
+    @end_count = @total_hit_count < hit_per_page * page_offset ? @total_hit_count : hit_per_page * page_offset
   end
 end
