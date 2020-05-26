@@ -1,5 +1,10 @@
 <div class="shops">
   <div class="shops__container">
+    <div class="shops__search-result">
+      <h2>お店検索結果一覧</h2>
+      <span><%= @total_hit_count %>件</span>中、<%= @start_count %>-<%= @end_count %>件を表示中
+    </div>
+
     <div class="shops__search-area">
       <% if @areas.present? %>
         <%= image_tag '/assets/shops/lupe.png', alt: '虫眼鏡' %><span>さらにエリアで絞り込む</span>
@@ -11,9 +16,7 @@
       <% end %>
     </div>
 
-    <div class="shops__search-result">
-      <span><%= @total_hit_count %>件</span>中、<%= @start_count %>-<%= @end_count %>件を表示中
-    </div>
+
 
     <% if @rests %>
       <% @rests.each do |rest| %>
