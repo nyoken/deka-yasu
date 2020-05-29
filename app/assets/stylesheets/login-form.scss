@@ -1,0 +1,63 @@
+.login-form {
+  width: 50%;
+  margin: 0 auto;
+
+  @media screen and (max-width: 767px) {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  &__input-area {
+    margin-bottom: 15px;
+  }
+
+  &__label {
+    margin-bottom: 5px;
+    font-size: 14px;
+    line-height: 25px;
+    margin: 0 8px 0 0;
+  }
+
+  &__input {
+    display: block;
+    width: 100%;
+    height: 50px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.4;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #CCC;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
+
+  &__button-area {
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  &__button {
+    width: 220px;
+    height: 45px;
+    line-height: 45px;
+    background-color: #ff3232;
+    border-color: #ff3232;
+    border-radius: 30px;
+    display: inline-block;
+    color: #fff;
+    font-size: 14px;
+    text-align: center;
+    box-shadow: 0 4px darken(#ff3232, 10%);
+    margin-bottom: 20px;
+
+    &:active {
+      margin-top: 4px;
+      margin-bottom: 16px;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}

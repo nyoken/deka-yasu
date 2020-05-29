@@ -1,26 +1,41 @@
-<h2>Log in</h2>
+<div class="login__wrapper">
+  <div class="login__container">
+    <h4>ログイン</h4>
+    <div class="login-form">
+      <%= form_for(resource, as: resource_name, url: login_path(resource_name)) do |f| %>
+        <div class="login-form__input-area">
+          <div class="login-form__label">
+            <%= f.label 'メールアドレス' %>
+          </div>
+          <%= f.email_field :email, class: 'login-form__input', placeholder: "メールアドレス" %>
+        </div>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+        <div class="login-form__input-area">
+          <div class="login-form__label">
+            <%= f.label 'パスワード' %>
+          </div>
+            <%= f.password_field :password, class: 'login-form__input', placeholder: "パスワード" %>
+        </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+        <% if devise_mapping.rememberable? %>
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :パスワードを記憶する %>
+          </div>
+        <% end %>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+        <div class="login-form__button-area">
+          <%= f.submit "ログイン", class: 'login-form__button' %>
+        </div>
+      <% end %>
+
+      <h5 class="reset-password-link">
+        パスワードを忘れた方は<%= link_to 'こちら', new_user_password_path %>
+      </h5>
+
+      <h5 class="reset-password-link">
+        登録が済んでいない方はこちら
+      </h5>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
