@@ -1,20 +1,21 @@
 <div class="login__wrapper">
   <div class="login__container">
     <h4>ログイン</h4>
-    <div class="login-form">
+    <%= image_tag '/assets/login/woman.jpg', alt: 'スマホを持っている女性' %>
+    <div class="form">
       <%= form_for(resource, as: resource_name, url: login_path(resource_name)) do |f| %>
-        <div class="login-form__input-area">
-          <div class="login-form__label">
+        <div class="form__input-area">
+          <div class="form__label">
             <%= f.label 'メールアドレス' %>
           </div>
-          <%= f.email_field :email, class: 'login-form__input', placeholder: "メールアドレス" %>
+          <%= f.email_field :email, class: 'form__input', placeholder: "メールアドレス" %>
         </div>
 
-        <div class="login-form__input-area">
-          <div class="login-form__label">
+        <div class="form__input-area">
+          <div class="form__label">
             <%= f.label 'パスワード' %>
           </div>
-            <%= f.password_field :password, class: 'login-form__input', placeholder: "パスワード" %>
+            <%= f.password_field :password, class: 'form__input', placeholder: "パスワード" %>
         </div>
 
         <% if devise_mapping.rememberable? %>
@@ -24,8 +25,8 @@
           </div>
         <% end %>
 
-        <div class="login-form__button-area">
-          <%= f.submit "ログイン", class: 'login-form__button' %>
+        <div class="form__btn-area">
+          <%= f.submit "ログイン", class: 'form__btn' %>
         </div>
       <% end %>
 

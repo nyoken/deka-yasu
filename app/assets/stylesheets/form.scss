@@ -1,4 +1,4 @@
-.login-form {
+.form {
   width: 50%;
   margin: 0 auto;
 
@@ -34,24 +34,28 @@
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
   }
 
-  &__button-area {
+  &__btn-area {
     text-align: center;
     margin-top: 40px;
   }
 
-  &__button {
+  &__btn {
     width: 220px;
     height: 45px;
     line-height: 45px;
     background-color: #ff3232;
-    border-color: #ff3232;
+    border: none;
     border-radius: 30px;
     display: inline-block;
     color: #fff;
-    font-size: 14px;
+    font-size: 18px;
     text-align: center;
     box-shadow: 0 4px darken(#ff3232, 10%);
     margin-bottom: 20px;
+
+    &:focus {
+      outline: none;
+    }
 
     &:active {
       margin-top: 4px;
