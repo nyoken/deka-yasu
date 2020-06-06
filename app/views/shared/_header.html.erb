@@ -14,13 +14,23 @@
       </div>
     </div>
     <ul>
-      <li>
-        <%= link_to '無料会員登録', register_path, class: 'header__register-btn' %>
-      </li>
+      <% if current_user.present? %>
+        <li>
+          こんにちは
+        </li>
 
-      <li>
-        <%= link_to 'ログイン', login_path, class: 'header__login-btn' %>
-      </li>
+        <li class='header__logout-button'>
+          <%= link_to 'ログアウト', logout_path, method: :delete %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to '無料会員登録', register_path, class: 'header__register-btn' %>
+        </li>
+
+        <li>
+          <%= link_to 'ログイン', login_path, class: 'header__login-btn' %>
+        </li>
+      <% end %>
     </ul>
   </nav>
 </header>
