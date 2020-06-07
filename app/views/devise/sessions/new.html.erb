@@ -3,7 +3,7 @@
     <h4>ログイン</h4>
     <%= image_tag '/assets/login/woman.jpg', alt: 'スマホを持っている女性' %>
     <div class="form">
-      <%= form_for(resource, as: resource_name, url: login_path(resource_name)) do |f| %>
+      <%= form_for(resource, as: resource_name, url: login_path) do |f| %>
         <div class="form__input-area">
           <div class="form__label">
             <%= f.label 'メールアドレス' %>
