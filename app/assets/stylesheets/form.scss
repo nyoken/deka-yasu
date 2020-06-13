@@ -17,7 +17,7 @@
       border-radius: 3px;
       border: none;
 
-      &[type="email"], &[type="password"], &[type="password_confirmation"] {
+      &[type="email"], &[type="text"], &[type="password"], &[type="password_confirmation"] {
         background: #eee;
         color: #777;
         padding: 10px;
@@ -37,11 +37,20 @@
         }
       }
     }
+
+    textarea {
+      background: #eee;
+      color: #777;
+      padding: 10px;
+      width: 100%;
+      border-radius: 3px;
+      border: none;
+    }
   }
 
-  &__item {
+  div {
     &:not(:first-of-type) {
-      margin-top: 20px;
+      margin-top: 25px;
     }
 
     p {
