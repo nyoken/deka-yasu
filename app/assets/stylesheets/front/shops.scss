@@ -43,25 +43,14 @@
   }
 
   &__restaurant {
-    margin-top: 30px;
     font-size: 15px;
-    border: solid 2px #ccc;
-    background-color: white;
-    color: black;
+    color: #5d627b;
     line-height: 1.8;
-    margin: 20px 0 50px;
-    padding: 50px 60px;
-    position: relative;
-
-    &::before {
-      content: "";
-      display: block;
-      position: absolute;
-      border-top: solid 6px #ff3232;
-      width: 100%;
-      top: 0;
-      margin: 0 -60px;
-    }
+    margin-top: 50px;
+    padding: 50px;
+    background: $white;
+    border-top: solid 6px $base-red;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
 
     @media screen and (max-width: 767px) {
       width: 96%;
@@ -84,99 +73,6 @@
 
       span {
         font-size: 16px;
-      }
-    }
-
-    h4 {
-      font-size: 16px;
-      font-weight: bold;
-      color: #ff3232;
-    }
-
-    h5 {
-      font-size: 16px;
-      margin: 10px 0 0;
-      line-height: 1.5;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    dl {
-      margin: 30px 0 0;
-    }
-
-    dt {
-      font-weight: normal;
-    }
-
-    hr {
-      border:none;
-      border-top: 2px dotted #B3B3B3;
-      width: 100%;
-      height: 2px;
-      margin: 50px 0 0 0;
-    }
-
-    .col-md-10,
-    .col-xs-8 {
-      float: none;
-      padding: 0;
-    }
-
-    &__new-label {
-      display: inline-block;
-      position: absolute;
-      top: 0;
-      left: 60px;
-      margin: 0;
-      z-index: 2;
-      width: 60px;
-      line-height: 25px;
-      text-align: center;
-      color: white;
-      background: #3296D4;
-
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 100%;
-        height: 0;
-        width: 0;
-        border-left: 30px solid #3296D4;
-        border-right: 30px solid #3296D4;
-        border-bottom: 7px solid transparent;
-      }
-
-      @media screen and (max-width: 767px) {
-        left: 15px;
-      }
-    }
-
-    &__image {
-      width: 49%;
-      height: 100%;
-      float: left;
-
-      @media screen and (max-width: 992px) {
-        width: 100%;
-        float: none;
-      }
-
-      @media print {
-        width: 48%;
-        display: inline-block;
-      }
-    }
-
-    &__show-image {
-      width: 80%;
-      height: auto;
-
-      @media screen and (max-width: 992px) {
-        width: 100%;
       }
     }
   }
