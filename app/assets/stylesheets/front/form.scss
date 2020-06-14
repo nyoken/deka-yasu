@@ -1,15 +1,17 @@
+@import "/variables";
+
 .form {
   h2 {
-    background: #f95252;
+    background: $headline-red;
     border-radius: 20px 20px 0 0;
-    color: #fff;
+    color: $white;
     font-size: 28px;
     padding: 20px 26px 20px 40px;
     margin: 0;
   }
 
   fieldset {
-    background: #fff;
+    background: $white;
     border-radius: 0 0 20px 20px;
     padding: 20px 26px;
 
@@ -18,29 +20,29 @@
       border: none;
 
       &[type="email"], &[type="text"], &[type="password"], &[type="password_confirmation"] {
-        background: #eee;
-        color: #777;
+        background: $form-bg;
+        color: $form-color;
         padding: 10px;
         width: 100%;
       }
 
       &[type="submit"] {
-        background: #33cc77;
-        color: #fff;
+        background: $submit-btn;
+        color: $white;
         display: block;
         margin: 35px auto 0;
         padding: 4px 0;
         width: 120px;
 
         &:hover {
-          background: #28ad63;
+          background: $submit-btn-hover;
         }
       }
     }
 
     textarea {
-      background: #eee;
-      color: #777;
+      background: $form-bg;
+      color: $form-color;
       padding: 10px;
       width: 100%;
       border-radius: 3px;
@@ -54,7 +56,7 @@
     }
 
     p {
-      color: #777;
+      color: $form-color;
       margin: 0;
     }
   }

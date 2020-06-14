@@ -1,0 +1,15 @@
+@import "/mixins/common-mixins";
+
+.contact {
+  &__wrapper {
+    @include static-wrapper;
+  }
+
+  &__container {
+    @include static-container;
+
+    p {
+      margin: 20px 0 0 26px;
+    }
+  }
+}

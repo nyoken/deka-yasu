@@ -1,10 +1,12 @@
+@import "/variables";
+
 header {
   .navbar {
-    background-color: #ff3232;
+    background-color: $base-red;
 
     a {
       font-weight: bold;
-      color: #fff;
+      color: $white;
       text-decoration: none;
     }
 
@@ -27,7 +29,7 @@ header {
         height: 2px;
         border-radius: 1px;
         margin: 4px 0;
-        background-color: #fff;
+        background-color: $white;
       }
     }
   }
@@ -41,12 +43,12 @@ header {
     li {
       width: 125px;
       height: 35px;
-      background-color: #fff;
+      background-color: $white;
       text-align: center;
       margin: 0 10px;
 
       a {
-        color: #000 !important;
+        color: $black !important;
         vertical-align: -webkit-baseline-middle;
 
         &:hover {

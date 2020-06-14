@@ -1,3 +1,5 @@
+@import "/mixins/common-mixins";
+
 .shops {
   h2 {
     font-size: 26px;
@@ -5,80 +7,12 @@
     margin-bottom: 5px;
   }
 
-  h1 {
-    font-size: 28px;
-    margin-left: 10px;
-
-    span {
-      font-size: 50px;
-      display: block;
-      text-align: center;
-      font-weight: bold;
-    }
-  }
-
-  form {
-    img {
-      width: 100%;
-      height: 300px;
-    }
-  }
-
   select {
-    /* styling */
-    background-color: #fff;
-    border: thin solid #4169e1;
-    border-radius: 4px;
-    display: inline-block;
-    font: inherit;
-    line-height: 1.5em;
-    padding: 0.5em 3.5em 0.5em 1em;
-
-    /* reset */
-
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-
-    background-image:
-      linear-gradient(45deg, transparent 50%, #4169e1 50%),
-      linear-gradient(135deg, #4169e1 50%, transparent 50%),
-      linear-gradient(to right, #f0f8ff, #f0f8ff);
-    background-position:
-      calc(100% - 20px) calc(1em + 2px),
-      calc(100% - 15px) calc(1em + 2px),
-      100% 0;
-    background-size:
-      5px 5px,
-      5px 5px,
-      2.5em 2.5em;
-    background-repeat: no-repeat;
-
-    &:focus {
-      background-image:
-        linear-gradient(45deg, white 50%, transparent 50%),
-        linear-gradient(135deg, transparent 50%, white 50%),
-        linear-gradient(to right, gray, gray);
-      background-position:
-        calc(100% - 15px) 1em,
-        calc(100% - 20px) 1em,
-        100% 0;
-      background-size:
-        5px 5px,
-        5px 5px,
-        2.5em 2.5em;
-      background-repeat: no-repeat;
-      border-color: grey;
-      outline: 0;
-    }
+    @include select-box;
   }
 
   &__container {
-    padding: 60px 180px;
-    background-color: #fffff0;
+    @include container;
   }
 
   &__search-area {
@@ -104,7 +38,7 @@
 
     span {
       font-size: 28px;
-      color: #FF0000;
+      color: $base-red;
     }
   }
 
@@ -287,78 +221,12 @@
     }
   }
 
-  // ドット区切りの表（タイトルエリアにアイコン表示する場合はmargin-leftを指定）
   &__restaurant--bottom {
-    p {
-      word-break: break-all;
-    }
-
-    dl {
-      margin-top: 15px;
-      padding-bottom: 15px;
-      border-bottom: 2px dotted #B3B3B3;
-      display: flex;
-
-      dt {
-        width: 15%;
-        font-weight: normal;
-        @media screen and (max-width: 767px) {
-          width: 25%;
-        }
-      }
-
-      dd {
-        width: 85%;
-        margin: 0;
-
-        p {
-          margin: 0 10px;
-          line-height: 1.8;
-        }
-
-        @media screen and (max-width: 767px) {
-          width: 65%;
-        }
-      }
-    }
+    @include table;
   }
 
-  &__search-button {
-    display: inline-block;
-    padding: 0.3em 1em;
-    text-decoration: none;
-    color: #6495ed;
-    border: solid 2px #6495ed;
-    border-radius: 3px;
-    transition: .4s;
+  &__search-btn {
+    @include search-btn;
     margin-left: 45px;
-
-    &:hover {
-      background: #67c5ff;
-      color: white;
-    }
-  }
-
-  .col-md-5 {
-    label {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    select {
-      width: 100%;
-      margin-top: 15px;
-    }
-  }
-
-  .col-md-2 {
-    font-size: 220px;
-    text-align: center;
-  }
-
-  .col-md-12 {
-    font-size: 24px;
-    text-align: center;
-    margin-top: 60px;
   }
 }

@@ -1,0 +1,41 @@
+@import "/mixins/common-mixins";
+
+.service {
+  &__wrapper {
+    @include static-wrapper;
+  }
+
+  &__container {
+    @include static-container;
+
+    ul {
+      list-style: none;
+      padding: 0;
+
+      li {
+        display: flex;
+        padding: 20px 0;
+
+        &:not(:first-of-type) {
+          border-top: 1px dotted $base-red;
+        }
+
+        img {
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  &__item {
+    margin-left: 15px;
+
+    h3 {
+      margin: 0;
+    }
+
+    p {
+      margin: 15px 0 0;
+    }
+  }
+}
