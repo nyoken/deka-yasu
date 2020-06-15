@@ -6,10 +6,6 @@ Rails.application.routes.draw do
   get 'contact/complete', to: 'contact#complete'
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
 
-  get 'contact/new'
-  get 'contact/confirm'
-  get 'contact/create'
-  get 'contact/complete'
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions' }
   devise_scope :user do

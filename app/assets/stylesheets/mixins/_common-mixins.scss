@@ -135,6 +135,25 @@
   }
 }
 
+@mixin submit-btn {
+  width: 120px;
+  color: $white;
+  background: $submit-btn;
+  border: none;
+  display: block;
+  margin: 35px auto 0;
+  padding: 4px 0;
+
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    background: $submit-btn-hover;
+  }
+}
+
 @mixin table {
   p {
     word-break: break-all;

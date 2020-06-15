@@ -1,4 +1,4 @@
-@import "/variables";
+@import "/mixins/common-mixins";
 
 .form {
   h2 {
@@ -27,16 +27,7 @@
       }
 
       &[type="submit"] {
-        background: $submit-btn;
-        color: $white;
-        display: block;
-        margin: 35px auto 0;
-        padding: 4px 0;
-        width: 120px;
-
-        &:hover {
-          background: $submit-btn-hover;
-        }
+        @include submit-btn;
       }
     }
 

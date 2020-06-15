@@ -3,13 +3,34 @@
 .contact {
   &__wrapper {
     @include static-wrapper;
+
+    &--complete {
+      @include static-wrapper;
+      height: 100vh;
+    }
   }
 
   &__container {
     @include static-container;
+    padding: 50px;
 
     p {
       margin: 20px 0 0 26px;
     }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 50px;
+    }
+  }
+
+  &__confirm {
+    @include table;
+    margin-top: 30px;
+  }
+
+  &__submit-btn {
+    @include submit-btn;
   }
 }
