@@ -10,6 +10,8 @@ class ContactController < ApplicationController
 
   def create
     if @contact.save
+      ContactMailer.send_email_to_user(@contact).deliver
+      ContactMailer.send_email_to_admin(@contact).deliver
       render :complete
     else
       flash.now[:danger] = 'エラーが発生したためもう一度入力してください。'

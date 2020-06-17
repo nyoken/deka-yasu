@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   root 'home#index'
   get 'service', to: 'static#service'
   get 'contact', to: 'contact#new'

@@ -53,7 +53,10 @@ Rails.application.configure do
     authentication: "plain"
   }
 
-  config.action_mailer.perform_caching = false
+  # letter_opener設定
+  config.action_mailer.perform_caching = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
