@@ -32,6 +32,10 @@ gem 'kaminari'
 # ユーザー認証
 gem "devise"
 
+# deviseの日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
