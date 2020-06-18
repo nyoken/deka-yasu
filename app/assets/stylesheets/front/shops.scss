@@ -9,6 +9,7 @@
 
   select {
     @include select-box;
+    margin-top: 15px;
   }
 
   &__container {
@@ -17,18 +18,25 @@
 
   &__search-area {
     font-size: 20px;
-    display: flex;
-    align-items: center;
-    margin-top: 30px;
+    background: #FFF0F5;
+    border: solid 1px $base-red;
+    border-radius: 30px;
+    margin-top: 15px;
+    padding: 25px;
 
     img {
       width: 50px;
     }
 
-    form {
+    &--checkbox {
       display: flex;
-      justify-content: space-between;
-      margin-left: 45px;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-top: 30px;
+
+      input {
+        transform: scale3d(1.5, 1.5, 1.5);
+      }
     }
   }
 
@@ -123,6 +131,7 @@
 
   &__search-btn {
     @include search-btn;
-    margin-left: 45px;
+    display: block;
+    margin: 20px auto 0;
   }
 }

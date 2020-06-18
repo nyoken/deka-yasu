@@ -6,11 +6,37 @@
     </div>
 
     <div class="shops__search-area">
+      <%= image_tag '/assets/shops/lupe.png', alt: '虫眼鏡' %><span>さらにエリアで絞り込む</span>
       <% if @areas.present? %>
-        <%= image_tag '/assets/shops/lupe.png', alt: '虫眼鏡' %><span>さらにエリアで絞り込む</span>
         <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
           <%= f.hidden_field :pref_code, value: @pref_code %>
           <%= f.select :areacode_s, options_for_select(@areas.map{ |area| [area["areaname_s"], area["areacode_s"]]}) %><br />
+          <section class="shops__search-area--checkbox">
+            <div class="col-md-4">
+              <%= f.label :モーニング営業あり %>
+              <%= f.check_box :breakfast %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :ランチ営業あり %>
+              <%= f.check_box :lunch %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :深夜営業あり %>
+              <%= f.check_box :midnight %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :食べ放題あり %>
+              <%= f.check_box :buffet %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :飲み放題あり %>
+              <%= f.check_box :bottomless_cup %>
+            </div>
+            <div class="col-md-4">
+              <%= f.label :禁煙席あり %>
+              <%= f.check_box :no_smoking %>
+            </div>
+          </section>
           <%= f.submit '絞り込む', class: "shops__search-btn" %>
         <% end %>
       <% end %>

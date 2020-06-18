@@ -12,7 +12,13 @@ class ShopsController < ApplicationController
       "hit_per_page": 20,
       "pref": params[:pref_code],
       "category_l": params[:category_code],
-      "offset_page": params[:page]
+      "offset_page": params[:page],
+      "breakfast": params[:breakfast],
+      "lunch": params[:lunch],
+      "midnight": params[:midnight],
+      "buffet": params[:buffet],
+      "bottomless_cup": params[:bottomless_cup],
+      "no_smoking": params[:no_smoking]
     }
 
     if params[:areacode_s]
