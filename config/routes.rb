@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
 
   root 'home#index'
@@ -8,6 +7,9 @@ Rails.application.routes.draw do
   post 'contact/confirm', to: 'contact#confirm'
   get 'contact/complete', to: 'contact#complete'
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
+  get 'keeplist/', to: 'keeplist#index'
+  post 'keeplist/create'
+  delete 'keeplist/destroy'
 
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions' }
