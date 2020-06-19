@@ -3,6 +3,7 @@ class ShopsController < ApplicationController
     area_url = "https://api.gnavi.co.jp/master/GAreaSmallSearchAPI/v3/?keyid=#{ENV['GURUNAVI_API_KEY']}"
     parse_json(area_url)
     @areas = @result["garea_small"].select{|garea| garea["pref"]["pref_code"] == params[:pref_code]}
+    @pref_code = params[:pref_code] if params[:pref_code].present?
 
     # dotenvで設定したAPIキーを取得し、GURUNAVI_API用URL内に設定
 
