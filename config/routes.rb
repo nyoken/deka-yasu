@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   post 'contact/confirm', to: 'contact#confirm'
   get 'contact/complete', to: 'contact#complete'
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
-  get 'keeplist/', to: 'keeplist#index'
+  get 'keeplist', to: 'keeplist#index'
   post 'keeplist/create'
   delete 'keeplist/destroy'
 

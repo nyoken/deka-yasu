@@ -1,4 +1,4 @@
-<header>
+<header class="header">
   <nav class="navbar fixed-top navbar-expand-lg">
     <%= link_to "ペイつか！", root_path, class: "navbar-brand" %>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,20 +15,20 @@
     </div>
     <ul>
       <% if current_user.present? %>
-        <li>
-          こんにちは
+        <li class="header__keeplist-btn">
+          <%= image_tag '/assets/keeplist/star.png', alt: '星のアイコン' %><%= link_to 'キープリスト', keeplist_path %>
         </li>
 
-        <li class='header__logout-button'>
+        <li>
           <%= link_to 'ログアウト', logout_path, method: :delete %>
         </li>
       <% else %>
         <li>
-          <%= link_to '無料会員登録', register_path, class: 'header__register-btn' %>
+          <%= link_to '無料会員登録', register_path %>
         </li>
 
         <li>
-          <%= link_to 'ログイン', login_path, class: 'header__login-btn' %>
+          <%= link_to 'ログイン', login_path %>
         </li>
       <% end %>
     </ul>
