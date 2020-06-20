@@ -1,0 +1,2 @@
+class KeepShop < ApplicationRecord
+end
