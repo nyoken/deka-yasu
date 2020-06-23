@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_20_174740) do
+ActiveRecord::Schema.define(version: 2020_06_21_162606) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(version: 2020_06_20_174740) do
     t.string "shop_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "user_keep_shops", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "keep_shop_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["keep_shop_id"], name: "index_user_keep_shops_on_keep_shop_id"
+    t.index ["user_id", "keep_shop_id"], name: "index_user_keep_shops_on_user_id_and_keep_shop_id", unique: true
+    t.index ["user_id"], name: "index_user_keep_shops_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -56,4 +66,6 @@ ActiveRecord::Schema.define(version: 2020_06_20_174740) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "user_keep_shops", "keep_shops"
+  add_foreign_key "user_keep_shops", "users"
 end

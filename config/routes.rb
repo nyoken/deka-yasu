@@ -7,9 +7,8 @@ Rails.application.routes.draw do
   post 'contact/confirm', to: 'contact#confirm'
   get 'contact/complete', to: 'contact#complete'
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
-  get 'keeplist', to: 'keeplist#index'
-  post 'keeplist/create'
-  delete 'keeplist/destroy'
+
+  resources :keeplist, only: [:index, :create, :destroy]
 
   devise_for :users, controllers: { registrations: 'users/registrations',
                                     sessions: 'users/sessions' }
