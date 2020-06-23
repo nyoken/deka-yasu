@@ -81,11 +81,11 @@
               </dd>
             </dl>
           </div>
+          <% if user_signed_in? %>
+            <% get_keep_shop_id(rest["id"]) %>
+            <%= render 'shared/keep_btn', rest: rest, user_keep_shops: @user_keep_shops, keep_shop_id: @keep_shop_id %>
+          <% end %>
         </div>
-        <% if user_signed_in? %>
-          <% get_keep_shop_id(rest["id"]) %>
-          <%= render 'shops/keep_btn', rest: rest, user_keep_shops: @user_keep_shops, keep_shop_id: @keep_shop_id %>
-        <% end %>
       <% end %>
     <% end %>
     <%= paginate @rests %>

@@ -1,5 +1,11 @@
 class KeeplistController < ApplicationController
+  include ShopsHelper
+  before_action :set_keeplist, only: [:index, :destroy]
+
   def index
+    rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=#{ENV['GURUNAVI_API_KEY']}&id=#{@keep_shops}"
+    parse_json(rest_url)
+    @rests = @result["rest"]
   end
 
   def create

@@ -1,4 +1,5 @@
 class ShopsController < ApplicationController
+  include ShopsHelper
   before_action :set_keeplist, only: [:index]
 
   def index
@@ -8,7 +9,6 @@ class ShopsController < ApplicationController
     @pref_code = params[:pref_code] if params[:pref_code].present?
 
     # dotenvで設定したAPIキーを取得し、GURUNAVI_API用URL内に設定
-
     query_items = {
       "keyid": ENV['GURUNAVI_API_KEY'],
       "e_money": 1,
@@ -41,11 +41,5 @@ class ShopsController < ApplicationController
 
     @start_count = hit_per_page * (page_offset - 1) + 1
     @end_count = @total_hit_count < hit_per_page * page_offset ? @total_hit_count : hit_per_page * page_offset
-  end
-
-  private
-
-  def set_keeplist
-    @user_keep_shops = user_signed_in? ? current_user.user_keep_shops.pluck('keep_shop_id') : []
   end
 end
