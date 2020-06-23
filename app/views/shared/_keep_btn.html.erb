@@ -1,14 +1,12 @@
-<% if controller.controller_name == "shops" %>
-  <% if user_keep_shops.include?(keep_shop_id) %>
-    <%= button_tag('キープ済', type: :button) %>
-  <% else %>
-    <%= form_tag(keeplist_index_path) do %>
-      <%= hidden_field_tag :shop_id, rest["id"] %>
-      <%= button_tag('キープする') %>
-    <% end %>
-  <% end %>
-<% else %>
+<% if controller.controller_name == "keeplist" %>
   <%= form_tag(keeplist_path(rest["id"]), method: :delete) do %>
     <%= button_tag('キープリストから削除する') %>
+  <% end %>
+<% elsif user_keep_shops.include?(keep_shop_id) %>
+  <%= button_tag('キープ済', type: :button) %>
+<% else %>
+  <%= form_tag(keeplist_index_path) do %>
+    <%= hidden_field_tag :shop_id, rest["id"] %>
+    <%= button_tag('キープする') %>
   <% end %>
 <% end %>

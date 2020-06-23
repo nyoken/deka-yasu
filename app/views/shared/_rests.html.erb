@@ -1,0 +1,48 @@
+<% if rests %>
+  <% rests.each do |rest| %>
+    <div class="shops__restaurant">
+      <div class="shops__restaurant-title">
+        <h3><%= link_to rest["name"], rest["url"] %>
+          <span>
+            （<%= rest["category"] %>／<%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分）
+          </span>
+        </h3>
+      </div>
+      <div class="shops__restaurant-top">
+        <%= image_tag(rest["image_url"]["shop_image1"]) %>
+        <div class="shops__usable-emoney">
+          <span class="shops__recommend-header">使える電子マネー！</span>
+          <p>
+            <% rest["e_money"].split(",").each do |e_money| %>
+              <%= e_money %>&nbsp;/
+            <% end %>
+          </p>
+        </div>
+      </div>
+      <div class="shops__restaurant--bottom">
+        <dl>
+          <dt>営業時間</dt>
+          <dd>
+            <p><%= rest["opentime"] %></p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>休業日</dt>
+          <dd>
+            <p><%= rest["holiday"] %></p>
+          </dd>
+        </dl>
+        <dl>
+          <dt>平均予算</dt>
+          <dd>
+            <p><%= rest["budget"] %>円</p>
+          </dd>
+        </dl>
+      </div>
+      <% if user_signed_in? %>
+        <% get_keep_shop_id(rest["id"]) %>
+        <%= render 'shared/keep_btn', rest: rest, user_keep_shops: @user_keep_shops, keep_shop_id: @keep_shop_id %>
+      <% end %>
+    </div>
+  <% end %>
+<% end %>
