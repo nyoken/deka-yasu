@@ -111,6 +111,19 @@
   }
 }
 
+// アイコン
+@mixin icon($background-image, $width, $height, $top, $left) {
+  content: '';
+  width: $width;
+  height: $height;
+  background-image: $background-image;
+  background-repeat: no-repeat;
+  background-size: contain;
+  position: absolute;
+  top: $top;
+  left: $left;
+}
+
 @mixin search-btn {
   width: 160px;
   position: relative;

@@ -83,6 +83,20 @@
         font-size: 16px;
       }
     }
+
+    button {
+      width: 180px;
+      height: 50px;
+      border: none;
+      border-radius: 30px;
+      display: block;
+      margin: 50px auto 0;
+      position: relative;
+
+      &:focus {
+        outline: none;
+      }
+    }
   }
 
   &__restaurant-top {
@@ -127,6 +141,33 @@
 
   &__restaurant--bottom {
     @include table;
+  }
+
+  &__keep-btn {
+    font-weight: bold;
+    color: $white;
+    background: #32cd32;
+
+    &::before {
+      @include icon(url(/assets/shared/star.png), 35px, 35px, 12px, 18px);
+    }
+  }
+
+  &__keeped-btn {
+    background: $gray-bg;
+    pointer-events: none;
+
+    &::before {
+      @include icon(url(/assets/shared/gray-star.png), 20px, 20px, 15px, 32px);
+    }
+  }
+
+  &__delete-keep-btn {
+    background: $gray-bg;
+
+    &::before {
+      @include icon(url(/assets/shared/batsu-mark.png), 15px, 15px, 18px, 30px);
+    }
   }
 
   &__search-btn {
