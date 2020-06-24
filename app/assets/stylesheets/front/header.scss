@@ -62,16 +62,15 @@
 
   &__keeplist-btn {
     background-color: #223377 !important;
-    display: flex;
-    align-items: center;
+    position: relative;
 
     a {
       color: $white !important;
+      margin-left: 16px;
     }
 
-    img {
-      width: 24px;
-      height: 18px;
+    &::before {
+      @include icon(url(/assets/shared/star.png), 22px, 18px, 10px, 3px);
     }
   }
 }

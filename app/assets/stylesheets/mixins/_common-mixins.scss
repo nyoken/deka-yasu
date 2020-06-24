@@ -10,14 +10,6 @@
   width: 960px;
   padding: 100px 180px 0px;
   margin: 0 auto;
-
-  @media screen and (max-width: 991px) {
-    width: 100%;
-  }
-
-  @media screen and (max-width: 767px) {
-    padding: 0 20px;
-  }
 }
 
 @mixin wrapper {
@@ -27,7 +19,6 @@
 
 @mixin container {
   padding: 60px 180px;
-  background-color: $wrapper-bg;
 
   h2 {
     font-size: 26px;

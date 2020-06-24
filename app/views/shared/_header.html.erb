@@ -1,35 +1,43 @@
 <header class="header">
   <nav class="navbar fixed-top navbar-expand-lg">
+    <!-- ロゴ -->
     <%= link_to "ペイつか！", root_path, class: "navbar-brand" %>
+
+    <!-- SP用ハンバーガーアイコン -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
     </button>
+
+    <!-- メニュー -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div class="navbar-nav">
         <%= link_to "HOME", root_path, class: "nav-item nav-link" %>
         <%= link_to "サービス紹介", service_path, class: "nav-item nav-link" %>
         <%= link_to "お問い合わせ", contact_path, class: "nav-item nav-link" %>
+
+        <!-- SP時のみ表示 -->
+        <div class="d-block d-sm-none">
+          <% if user_signed_in? %>
+            <%= link_to 'キープリスト', keeplist_index_path, class: "nav-item nav-link" %>
+            <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-item nav-link" %>
+          <% else %>
+            <%= link_to '無料会員登録', register_path, class: "nav-item nav-link" %>
+            <%= link_to 'ログイン', login_path, class: "sp__visible nav-item nav-link" %>
+          <% end %>
+        </div>
       </div>
     </div>
-    <ul>
-      <% if current_user.present? %>
-        <li class="header__keeplist-btn">
-          <%= image_tag '/assets/shared/star.png', alt: '星アイコン' %><%= link_to 'キープリスト', keeplist_index_path %>
-        </li>
 
-        <li>
-          <%= link_to 'ログアウト', logout_path, method: :delete %>
-        </li>
+    <!-- PC時のみ表示 -->
+    <ul class="d-none d-sm-flex">
+      <% if user_signed_in? %>
+        <li class="header__keeplist-btn"><%= link_to 'キープリスト', keeplist_index_path %></li>
+        <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       <% else %>
-        <li>
-          <%= link_to '無料会員登録', register_path %>
-        </li>
-
-        <li>
-          <%= link_to 'ログイン', login_path %>
-        </li>
+        <li><%= link_to '無料会員登録', register_path %></li>
+        <li><%= link_to 'ログイン', login_path %></li>
       <% end %>
     </ul>
   </nav>
