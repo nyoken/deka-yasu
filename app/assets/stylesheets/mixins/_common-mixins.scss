@@ -20,9 +20,20 @@
   }
 }
 
-@mixin static-wrapper {
+@mixin wrapper {
   background-color: $wrapper-bg;
   padding: 68px 0 100px;
+}
+
+@mixin container {
+  padding: 60px 180px;
+  background-color: $wrapper-bg;
+
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
 }
 
 @mixin static-container {
@@ -41,7 +52,6 @@
 
   h2 {
     color: $base-red;
-    padding-left: 30px;
     padding-bottom: 10px;
     border-bottom: 5px dotted $base-red;
     margin-top: 0;
@@ -52,11 +62,6 @@
       margin-bottom: 0;
     }
   }
-}
-
-@mixin container {
-  padding: 60px 180px;
-  background-color: $wrapper-bg;
 }
 
 @mixin select-box {

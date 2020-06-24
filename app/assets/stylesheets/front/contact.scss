@@ -2,20 +2,19 @@
 
 .contact {
   &__wrapper {
-    @include static-wrapper;
+    @include wrapper;
 
     &--complete {
-      @include static-wrapper;
+      @include wrapper;
       height: 100vh;
     }
   }
 
   &__container {
     @include static-container;
-    padding: 50px;
-
+    
     p {
-      margin: 20px 0 0 26px;
+      margin-top: 20px;
     }
 
     a {
