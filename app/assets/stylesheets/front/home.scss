@@ -12,8 +12,16 @@
       text-align: center;
       margin-bottom: 60px;
 
+      @media screen and (max-width: 575.98px) {
+        margin-bottom: 0;
+      }
+
       span {
         border-bottom: double 6px $double-border-yellow;
+
+        @media screen and (max-width: 575.98px) {
+          font-size: 20px;
+        }
       }
     }
 
@@ -34,6 +42,10 @@
     flex-wrap: wrap;
 
     .col-md-5 {
+      @media screen and (max-width: 575.98px) {
+        margin-top: 50px;
+      }
+
       label {
         font-size: 24px;
         font-weight: bold;
@@ -42,6 +54,10 @@
       select {
         width: 100%;
         margin-top: 15px;
+
+        @media screen and (max-width: 575.98px) {
+          margin-top: 0;
+        }
       }
     }
 
@@ -65,6 +81,16 @@
     height: 640px;
     display: flex;
     align-items: center;
+
+    @media screen and (min-width: 576px) and (max-width: 767.98px) {
+      background-image: url(/assets/home/top-bg-sp.jpg);
+      height: 500px;
+    }
+
+    @media screen and (max-width: 575.98px) {
+      background-image: url(/assets/home/top-bg-sp.jpg);
+      height: 300px;
+    }
 
     h1 {
       font-size: 28px;

@@ -4,7 +4,7 @@
     <%= link_to "ペイつか！", root_path, class: "navbar-brand" %>
 
     <!-- SP用ハンバーガーアイコン -->
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="d-block d-lg-none navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
       <span class="icon-bar"></span>
@@ -18,7 +18,7 @@
         <%= link_to "お問い合わせ", contact_path, class: "nav-item nav-link" %>
 
         <!-- SP時のみ表示 -->
-        <div class="d-block d-sm-none">
+        <div class="d-block d-lg-none">
           <% if user_signed_in? %>
             <%= link_to 'キープリスト', keeplist_index_path, class: "nav-item nav-link" %>
             <%= link_to 'ログアウト', logout_path, method: :delete, class: "nav-item nav-link" %>
@@ -31,7 +31,7 @@
     </div>
 
     <!-- PC時のみ表示 -->
-    <ul class="d-none d-sm-flex">
+    <ul class="d-none d-lg-flex">
       <% if user_signed_in? %>
         <li class="header__keeplist-btn"><%= link_to 'キープリスト', keeplist_index_path %></li>
         <li><%= link_to 'ログアウト', logout_path, method: :delete %></li>

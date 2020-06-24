@@ -1,11 +1,11 @@
 <div class="home__wrapper">
   <div class="home__bg-image">
-    <h1>電子マネーが使えるお店探し<br />
+    <h1 class="d-none d-md-block">電子マネーが使えるお店探し<br />
     <span>ペイつか！</span></h1>
   </div>
 
   <div class="home__container">
-    <h2><span>都道府県とカテゴリーを選んで検索するだけ！</span></h2>
+    <h2><span>都道府県とカテゴリーを<br class="d-block d-md-none">選んで検索するだけ！</span></h2>
     <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
       <div class="home__row">
         <div class="col-md-5">
@@ -13,7 +13,7 @@
           <%= image_tag '/assets/home/japan.jpg', alt: '日本地図' %>
           <%= f.select :pref_code, options_for_select(@prefs.map{ |pref| [pref["pref_name"], pref["pref_code"]]}, selected: "なし") %><br />
         </div>
-        <div class="col-md-2">×</div>
+        <div class="col-md-2 d-none d-lg-block">×</div>
         <div class="col-md-5">
           <%= f.label :カテゴリー %>を選択
           <%= image_tag '/assets/home/pizza.jpg', alt: 'ピザ' %>
