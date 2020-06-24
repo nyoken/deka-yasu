@@ -12,6 +12,12 @@ class KeeplistController < ApplicationController
     unless KeepShop.find_by(shop_id: params[:shop_id])
       KeepShop.create(shop_id: params[:shop_id])
     end
+
+    if current_user.keep_shops.size >= KeepShop::KEEP_SHOP_LIMIT
+      flash[:danger] = '上限（10件）に達しているため、キープリストに追加できません。'
+      redirect_back(fallback_location: root_path) and return
+    end
+
     keep_shop = KeepShop.find_by(shop_id: params[:shop_id])
     current_user.like(keep_shop)
     flash[:success] = "キープリストに追加しました"
