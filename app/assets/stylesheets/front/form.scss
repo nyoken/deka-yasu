@@ -8,6 +8,12 @@
     font-size: 28px;
     padding: 20px 26px 20px 40px;
     margin: 0;
+
+    @media screen and (max-width: 767.98px) {
+      background: $white;
+      color: $black;
+      padding: 0 24px;
+    }
   }
 
   fieldset {

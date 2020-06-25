@@ -4,12 +4,21 @@
   height: 100vh;
   background-color: $wrapper-bg;
   padding-top: $header-height;
+
+  @media screen and (max-width: 767.98px) {
+    background-color: $white;
+  }
 }
 
 @mixin one-page-container {
   width: 960px;
   padding: 100px 180px 0px;
   margin: 0 auto;
+
+  @media screen and (max-width: 767.98px) {
+    width: 100%;
+    padding: 24px 0;
+  }
 }
 
 @mixin wrapper {
