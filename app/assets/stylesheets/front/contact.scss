@@ -2,17 +2,17 @@
 
 .contact {
   &__wrapper {
-    @include wrapper;
+    @include static-wrapper;
 
-    &--complete {
-      @include wrapper;
+    &--confirm, &--complete {
+      @include static-wrapper;
       height: 100vh;
     }
   }
 
   &__container {
     @include static-container;
-    
+
     p {
       margin-top: 20px;
     }

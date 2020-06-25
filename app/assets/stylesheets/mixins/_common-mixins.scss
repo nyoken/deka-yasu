@@ -3,7 +3,7 @@
 @mixin one-page-wrapper {
   height: 100vh;
   background-color: $wrapper-bg;
-  padding-top: 68px;
+  padding-top: $header-height;
 }
 
 @mixin one-page-container {
@@ -14,13 +14,13 @@
 
 @mixin wrapper {
   background-color: $wrapper-bg;
-  padding: 68px 0;
+  padding: $header-height 0;
 }
 
 @mixin container {
   padding: 60px 180px;
 
-  @media screen and (max-width: 767px) {
+  @media screen and (max-width: 767.98px) {
     margin-top: 20px;
     padding: 0;
   }
@@ -32,11 +32,26 @@
   }
 }
 
+@mixin static-wrapper {
+  background-color: $wrapper-bg;
+  padding: $header-height 0;
+
+  @media screen and (max-width: 767.98px) {
+    background-color: $white;
+    padding: 0;
+  }
+}
+
 @mixin static-container {
   width: 960px;
   background-color: $white;
   margin: 100px auto 0;
-  padding: 20px 20px 0;
+  padding: 20px;
+
+  @media screen and (max-width: 767.98px) {
+    width: 100%;
+    margin-top: $header-height;
+  }
 
   h2 {
     color: $base-red;
@@ -45,8 +60,7 @@
     margin-top: 0;
 
     @media screen and (max-width: 767px) {
-      font-size: 17px;
-      padding-left: 20px;
+      font-size: 20px;
       margin-bottom: 0;
     }
   }
@@ -172,11 +186,17 @@
     border-bottom: 2px dotted #B3B3B3;
     display: flex;
 
+    @media screen and (max-width: 767.98px) {
+      flex-direction: column;
+    }
+
     dt {
       width: 15%;
       font-weight: normal;
-      @media screen and (max-width: 767px) {
-        width: 25%;
+
+      @media screen and (max-width: 767.98px) {
+        width: 100%;
+        font-weight: bold;
       }
     }
 
@@ -184,13 +204,13 @@
       width: 85%;
       margin: 0;
 
+      @media screen and (max-width: 767.98px) {
+        width: 100%;
+      }
+
       p {
         margin: 0 10px;
         line-height: 1.8;
-      }
-
-      @media screen and (max-width: 767px) {
-        width: 65%;
       }
     }
   }

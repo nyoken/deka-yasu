@@ -1,4 +1,6 @@
+@import "/mixins/common-mixins";
+
 .alert {
-  margin-top: 68px;
+  margin-top: $header-height;
   margin-bottom: 0 !important;
 }
