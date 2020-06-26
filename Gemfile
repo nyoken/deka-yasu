@@ -36,6 +36,9 @@ gem "devise"
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 
+# アプリ名変更
+gem 'rename'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
