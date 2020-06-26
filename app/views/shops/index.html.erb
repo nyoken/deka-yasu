@@ -1,20 +1,11 @@
-<h2>さらにエリアで絞り込む</h2>
-<% if @areas.present? %>
-  <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
-    <%= f.label :エリアS %>
-    <%= f.hidden_field :pref_code, value: @pref_code %>
-    <%= f.select :areacode_s, options_for_select(@areas.map{ |area| [area["areaname_s"], area["areacode_s"]]}) %><br />
-    <%= f.submit '検索' %>
-  <% end %>
-<% end %>
-
-<h2>検索結果：<%= @total_count %>件</h2>
-<% if @rests %>
-  <% @rests.each do |rest| %>
-    <%= image_tag(rest["image_url"]["shop_image1"]) %>
-    <p>名前: <%= rest["name"] %></p>
-    <p>カテゴリー: <%= rest["category"] %></p>
-    <p>住所: <%= rest["address"] %></p>
-    <p>使える電子マネー: <%= rest["e_money"] %></p>
-  <% end %>
-<% end %>
+<div class="shops__wrapper">
+  <div class="shops__container">
+    <div class="shops__search-result">
+      <h2>お店検索結果一覧</h2>
+      <span><%= @total_hit_count %>件</span>中、<%= @start_count %>-<%= @end_count %>件を表示中
+    </div>
+    <%= render 'search-area', pref_code: @pref_code, areas: @areas %>
+    <%= render 'shared/rests', rests: @rests %>
+    <%= paginate @rests %>
+  </div>
+</div>

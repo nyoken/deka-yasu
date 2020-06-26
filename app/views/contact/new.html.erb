@@ -1,0 +1,29 @@
+<div class="contact__wrapper">
+  <div class="contact__container">
+    <h2>お問い合わせ</h2>
+    <p>以下を全てご記入の上、送信ボタンを押してください。</p>
+    <section class="form">
+      <%= form_for @contact, url: { action: 'confirm' } do |f| %>
+        <fieldset>
+          <div class="form__item">
+            <p><%= f.label :name, '氏名' %></p>
+            <p><%= f.text_field :name, placeholder: '例）ペイつか太郎'  %></p>
+          </div>
+          <div class="form__item">
+            <p><%= f.label :tel, '電話番号' %></p>
+            <p><%= f.text_field :tel, placeholder: '例）01-2345-6789' %></p>
+          </div>
+          <div class="form__item">
+            <p><%= f.label :email, 'メールアドレス' %></p>
+            <p><%= f.email_field :email, placeholder: '例）pay@tsuka.com' %></p>
+          </div>
+          <div class="form__item">
+            <p><%= f.label :content, 'お問い合わせ内容' %></p>
+            <%= f.text_area :content, placeholder: 'できるだけ詳細にご記入ください' %>
+          </div>
+          <%= f.submit '送信' %>
+        </fieldset>
+      <% end %>
+    </section>
+  </div>
+</div>

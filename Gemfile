@@ -26,6 +26,19 @@ gem 'jbuilder', '~> 2.7'
 # 環境変数定義用
 gem 'dotenv-rails'
 
+# ページネーション
+gem 'kaminari'
+
+# ユーザー認証
+gem "devise"
+
+# deviseの日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'
+
+# アプリ名変更
+gem 'rename'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -41,6 +54,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'letter_opener_web'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

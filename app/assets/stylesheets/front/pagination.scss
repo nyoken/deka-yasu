@@ -1,0 +1,24 @@
+@import "/mixins/common-mixins";
+
+.pagination {
+  justify-content: center;
+  margin: 50px 0 0;
+
+  .page-link {
+    color: #FF0461;
+    border-color: #CCC;
+
+    &:hover {
+      color: #FFABCE;
+    }
+
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .page-item.active .page-link {
+    background-color: #FF5192;
+    border-color: #FF5192;
+  }
+}

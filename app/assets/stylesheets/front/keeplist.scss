@@ -1,0 +1,17 @@
+@import "/mixins/common-mixins";
+
+.keeplist {
+  h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  &__wrapper {
+    @include wrapper;
+  }
+
+  &__container {
+    @include container;
+  }
+}

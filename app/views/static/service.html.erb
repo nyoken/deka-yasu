@@ -1,0 +1,38 @@
+<div class="service__wrapper">
+  <div class="service__container">
+    <h2>サービス紹介</h2>
+    <ul>
+      <li>
+        <%= image_tag '/assets/static/pc_woman.jpg', alt: 'PCを操作している女性', class: 'hidden-xs' %>
+        <section class="service__item">
+          <h3><%# 01 %>&#9312; 都道府県とお店の種類を選択</h3>
+          <p>HOMEページ下部から、電子マネーを使いたい「都道府県」と「カテゴリー」選択し、「検索」をクリック！</p>
+        </section>
+      </li>
+
+      <li>
+        <%= image_tag '/assets/static/sp_woman.jpg', alt: 'スマートフォンを操作している女性', class: 'hidden-xs' %>
+        <section class="service__item">
+          <h3><%# 02 %>&#9313; お店の一覧が表示される！</h3>
+          <p>表示された一覧から、気になるお店をチェック！</p>
+        </section>
+      </li>
+
+      <li>
+        <%= image_tag '/assets/static/check.jpg', alt: 'チェックマーク', class: 'hidden-xs' %>
+        <section class="service__item">
+          <h3><%# 03 %>&#9314; 詳細条件を選択し、さらに絞り込み検索も！</h3>
+          <p>検索結果が多すぎる場合は、一覧画面上部の「詳細条件」を選んで「絞り込む」をクリック！</p>
+        </section>
+      </li>
+
+      <li>
+        <%= image_tag '/assets/static/woman.jpg', alt: '微笑んでいる女性', class: 'hidden-xs' %>
+        <section class="service__item">
+          <h3><%# 04 %>&#9316; 無料会員登録で、お気に入り機能も使える！</h3>
+          <p><%= link_to "無料会員登録", register_path %>をすれば、気になるお店をキープリストに保存して、いつでも確認可能に！</p>
+        </section>
+      </li>
+    </ul>
+  </div>
+</div>

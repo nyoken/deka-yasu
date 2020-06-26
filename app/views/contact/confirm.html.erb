@@ -1,0 +1,38 @@
+<div class="contact__wrapper--confirm">
+  <div class="contact__container">
+    <h2>確認画面</h2>
+    <section class="contact__confirm">
+      <dl>
+        <dt>氏名</dt>
+        <dd>
+          <p><%= @contact.name %></p>
+        </dd>
+      </dl>
+      <dl>
+        <dt>電話番号</dt>
+        <dd>
+          <p><%= @contact.tel %></p>
+        </dd>
+      </dl>
+      <dl>
+        <dt>メールアドレス</dt>
+        <dd>
+          <p><%= @contact.email %></p>
+        </dd>
+      </dl>
+      <dl>
+        <dt>お問い合わせ内容</dt>
+        <dd>
+          <p><%= @contact.content %></p>
+        </dd>
+      </dl>
+    </section>
+    <%= form_for @contact, url: { action: 'complete' } do |f| %>
+      <%= f.hidden_field :name, value: @contact.name %>
+      <%= f.hidden_field :tel, value: @contact.tel %>
+      <%= f.hidden_field :email, value: @contact.email %>
+      <%= f.hidden_field :content, value: @contact.content %>
+      <%= f.submit "送信", class: 'contact__submit-btn' %>
+    <% end %>
+  </div>
+</div>

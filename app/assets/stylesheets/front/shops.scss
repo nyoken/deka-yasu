@@ -1,0 +1,204 @@
+@import "/mixins/common-mixins";
+
+.shops {
+  &__wrapper {
+    @include wrapper;
+  }
+
+  &__container {
+    @include container;
+
+    select {
+      @include select-box;
+      margin-top: 15px;
+    }
+  }
+
+  &__search-area {
+    font-size: 20px;
+    background: #FFF0F5;
+    border: solid 1px $base-red;
+    border-radius: 30px;
+    margin-top: 15px;
+    padding: 25px;
+
+    @media screen and (max-width: 767.98px) {
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
+    img {
+      width: 50px;
+
+      @media screen and (max-width: 767.98px) {
+        width: 25px;
+      }
+    }
+
+    &--checkbox {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      margin-top: 30px;
+
+      input {
+        transform: scale3d(1.5, 1.5, 1.5);
+
+        @media screen and (max-width: 767.98px) {
+          transform: inherit;
+        }
+      }
+    }
+  }
+
+  &__search-result {
+    font-size: 20px;
+
+    @media screen and (max-width: 767.98px) {
+      font-size: 16px;
+    }
+
+    span {
+      font-size: 28px;
+      color: $base-red;
+
+      @media screen and (max-width: 767.98px) {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &__restaurant {
+    font-size: 15px;
+    color: #5d627b;
+    line-height: 1.8;
+    margin-top: 50px;
+    padding: 50px;
+    background: $white;
+    border-top: solid 6px $base-red;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
+
+    @media screen and (max-width: 767.98px) {
+      margin-top: 30px;
+      padding: 20px 10px;
+    }
+
+    h3 {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 0;
+
+      @media screen and (max-width: 767px) {
+        font-size: 18px;
+      }
+
+      span {
+        font-size: 16px;
+      }
+    }
+
+    button {
+      width: 180px;
+      height: 50px;
+      border: none;
+      border-radius: 30px;
+      display: block;
+      margin: 50px auto 0;
+      position: relative;
+
+      @media screen and (max-width: 767px) {
+        margin-top: 20px;
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &__restaurant-top {
+    display: flex;
+    margin-top: 30px;
+
+    @media screen and (max-width: 767.98px) {
+      flex-direction: column;
+    }
+  }
+
+  &__usable-emoney {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 30px;
+
+    @media screen and (max-width: 767.98px) {
+      margin-top: 10px;
+      margin-left: 0;
+    }
+
+    p {
+      height: 100%;
+      background-color: #FFDBC9;
+      margin-top: -15px;
+      padding: 15px;
+    }
+  }
+
+  &__recommend-header {
+    width: 160px;
+    background-color: #FFF0F5;
+    font-size: 14px;
+    border: 1.5px solid #FFABCE;
+    border-radius: 8px;
+    display: inline-block;
+    z-index: 999;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      background-image: url(/assets/shops/bulb.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      vertical-align: middle;
+    }
+  }
+
+  &__restaurant--bottom {
+    @include table;
+  }
+
+  &__keep-btn {
+    font-weight: bold;
+    color: $white;
+    background: #32cd32;
+
+    &::before {
+      @include icon(url(/assets/shared/star.png), 35px, 35px, 12px, 18px);
+    }
+  }
+
+  &__keeped-btn {
+    background: $gray-bg;
+    pointer-events: none;
+
+    &::before {
+      @include icon(url(/assets/shared/gray-star.png), 20px, 20px, 15px, 32px);
+    }
+  }
+
+  &__delete-keep-btn {
+    background: $gray-bg;
+
+    &::before {
+      @include icon(url(/assets/shared/batsu-mark.png), 15px, 15px, 18px, 30px);
+    }
+  }
+
+  &__search-btn {
+    @include search-btn;
+    display: block;
+    margin: 20px auto 0;
+  }
+}

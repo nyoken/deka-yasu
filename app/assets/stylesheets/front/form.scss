@@ -1,0 +1,60 @@
+@import "/mixins/common-mixins";
+
+.form {
+  h2 {
+    background: $headline-red;
+    border-radius: 20px 20px 0 0;
+    color: $white;
+    font-size: 28px;
+    padding: 20px 26px 20px 40px;
+    margin: 0;
+
+    @media screen and (max-width: 767.98px) {
+      background: $white;
+      color: $black;
+      padding: 0 24px;
+    }
+  }
+
+  fieldset {
+    background: $white;
+    border-radius: 0 0 20px 20px;
+    padding: 20px 26px;
+
+    input {
+      border-radius: 3px;
+      border: none;
+
+      &[type="email"], &[type="text"], &[type="password"], &[type="password_confirmation"] {
+        background: $form-bg;
+        color: $form-color;
+        padding: 10px;
+        width: 100%;
+      }
+
+      &[type="submit"] {
+        @include submit-btn;
+      }
+    }
+
+    textarea {
+      background: $form-bg;
+      color: $form-color;
+      padding: 10px;
+      width: 100%;
+      border-radius: 3px;
+      border: none;
+    }
+  }
+
+  div {
+    &:not(:first-of-type) {
+      margin-top: 25px;
+    }
+
+    p {
+      color: $form-color;
+      margin: 0;
+    }
+  }
+}

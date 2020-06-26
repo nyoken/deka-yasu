@@ -1,0 +1,11 @@
+@import "/mixins/common-mixins";
+
+.register {
+  &__wrapper {
+    @include one-page-wrapper;
+  }
+
+  &__container {
+    @include one-page-container;
+  }
+}

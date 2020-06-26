@@ -1,0 +1,76 @@
+@import "/mixins/common-mixins";
+
+.header {
+  .navbar {
+    background-color: $base-red;
+
+    a {
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .navbar-brand {
+      font-size: 28px;
+      color: $white;
+    }
+
+    .navbar-nav {
+      .nav-link {
+        color: $white;
+        opacity: 0.9;
+      }
+    }
+
+    .navbar-toggler {
+      border: none;
+
+      .icon-bar {
+        display: block;
+        width: 24px;
+        height: 2px;
+        border-radius: 1px;
+        margin: 4px 0;
+        background-color: $white;
+      }
+    }
+  }
+
+  ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    li {
+      width: 125px;
+      height: 35px;
+      background-color: $white;
+      text-align: center;
+      margin: 0 10px;
+
+      a {
+        color: $black;
+        vertical-align: -webkit-baseline-middle;
+
+        &:hover {
+          opacity: 0.6;
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &__keeplist-btn {
+    background-color: #223377 !important;
+    position: relative;
+
+    a {
+      color: $white !important;
+      margin-left: 16px;
+    }
+
+    &::before {
+      @include icon(url(/assets/shared/star.png), 22px, 18px, 10px, 3px);
+    }
+  }
+}

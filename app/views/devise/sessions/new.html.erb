@@ -1,0 +1,34 @@
+<div class="login__wrapper">
+  <div class="login__container">
+    <section class="form">
+      <h2>ログイン</h2>
+      <%= form_for(resource, as: resource_name, url: login_path) do |f| %>
+        <fieldset>
+          <div class="form__item">
+            <p><%= f.label 'メールアドレス' %></p>
+            <p><%= f.email_field :email, placeholder: "メールアドレス" %></p>
+          </div>
+          <div class="form__item">
+            <p><%= f.label 'パスワード' %></p>
+            <p><%= f.password_field :password, placeholder: "パスワード" %></p>
+          </div>
+          <div class="form__item">
+            <% if devise_mapping.rememberable? %>
+              <div class="field">
+                <p>
+                  <%= f.check_box :remember_me %>
+                  <%= f.label :パスワードを記憶する %>
+                </p>
+              </div>
+            <% end %>
+          </div>
+          <%= f.submit "ログイン" %>
+        </fieldset>
+      <% end %>
+    </section>
+    <section class="login__link-area">
+      <p>パスワードを忘れた方は<%= link_to 'こちら', new_user_password_path %></p>
+      <p>登録が済んでいない方は<%= link_to 'こちら', register_path %></p>
+    </section>
+  </div>
+</div>
