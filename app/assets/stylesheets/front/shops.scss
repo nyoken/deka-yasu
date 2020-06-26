@@ -22,8 +22,17 @@
     margin-top: 15px;
     padding: 25px;
 
+    @media screen and (max-width: 767.98px) {
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
     img {
       width: 50px;
+
+      @media screen and (max-width: 767.98px) {
+        width: 25px;
+      }
     }
 
     &--checkbox {
@@ -34,6 +43,10 @@
 
       input {
         transform: scale3d(1.5, 1.5, 1.5);
+
+        @media screen and (max-width: 767.98px) {
+          transform: inherit;
+        }
       }
     }
   }
@@ -41,9 +54,17 @@
   &__search-result {
     font-size: 20px;
 
+    @media screen and (max-width: 767.98px) {
+      font-size: 16px;
+    }
+
     span {
       font-size: 28px;
       color: $base-red;
+
+      @media screen and (max-width: 767.98px) {
+        font-size: 20px;
+      }
     }
   }
 
@@ -57,14 +78,9 @@
     border-top: solid 6px $base-red;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.22);
 
-    @media screen and (max-width: 767px) {
-      width: 96%;
-      margin: 15px auto 30px;
-      padding: 45px 15px 40px;
-
-      &::before {
-        margin: 0 -15px;
-      }
+    @media screen and (max-width: 767.98px) {
+      margin-top: 30px;
+      padding: 20px 10px;
     }
 
     h3 {
@@ -90,6 +106,10 @@
       margin: 50px auto 0;
       position: relative;
 
+      @media screen and (max-width: 767px) {
+        margin-top: 20px;
+      }
+
       &:focus {
         outline: none;
       }
@@ -99,6 +119,10 @@
   &__restaurant-top {
     display: flex;
     margin-top: 30px;
+
+    @media screen and (max-width: 767.98px) {
+      flex-direction: column;
+    }
   }
 
   &__usable-emoney {
@@ -106,6 +130,11 @@
     display: flex;
     flex-direction: column;
     margin-left: 30px;
+
+    @media screen and (max-width: 767.98px) {
+      margin-top: 10px;
+      margin-left: 0;
+    }
 
     p {
       height: 100%;

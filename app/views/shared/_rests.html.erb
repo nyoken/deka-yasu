@@ -2,10 +2,8 @@
   <% rests.each do |rest| %>
     <div class="shops__restaurant">
       <div class="shops__restaurant-title">
-        <h3><%= link_to rest["name"], rest["url"] %>
-          <span>
-            （<%= rest["category"] %>／<%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分）
-          </span>
+        <h3><%= link_to rest["name"], rest["url"] %><br class="d-block d-md-none">
+          <span>（<%= rest["category"] %>／<%= rest["access"]["station"] %>から徒歩<%= rest["access"]["walk"] %>分）</span>
         </h3>
       </div>
       <div class="shops__restaurant-top">
