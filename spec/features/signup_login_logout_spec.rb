@@ -36,7 +36,7 @@ RSpec.feature "SingupLoginLogout", type: :feature do
     mail = ActionMailer::Base.deliveries.last
     url = extract_confirmation_url(mail)
     visit url
-    expect(page).to have_content 'メールアドレスが確認できました。'
+    expect(page).to have_content "メールアドレスが確認できました。"
 
     # ログイン成功を確認
     fill_in "メールアドレス", with: "email@example.com"
