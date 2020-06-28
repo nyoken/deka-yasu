@@ -1,0 +1,17 @@
+@import "variables";
+
+#error_explanation {
+  background: #fff0f5;
+  border: solid 1px #dc143c;
+  margin-bottom: 20px;
+  padding: 15px;
+
+  h3 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  ul {
+    margin-bottom: 0;
+  }
+}
