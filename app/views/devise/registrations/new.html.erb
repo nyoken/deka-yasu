@@ -2,7 +2,7 @@
   <div class="register__container">
 
     <section class="form">
-      <%= render "devise/shared/error_messages", resource: resource %>
+      <%= render "shared/error_messages", resource: resource %>
       <h2>無料会員登録</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 

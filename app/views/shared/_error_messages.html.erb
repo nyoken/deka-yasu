@@ -1,0 +1,10 @@
+<% if resource.errors.any? %>
+  <section class="error">
+    <h3>入力内容に<%= resource.errors.count %>件のエラーがあります。</h3>
+    <ul>
+      <% resource.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>

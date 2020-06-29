@@ -60,7 +60,7 @@ RSpec.describe "Users", type: :request do
       it 'エラーが表示されること' do
         # 不正なパラメータの場合に、「エラーが発生したため ユーザ は保存されませんでした。」の文言が表示されること
         post register_path, params: { user: invalid_user_params }
-        expect(response.body).to include 'エラーが発生したため ユーザ は保存されませんでした。'
+        expect(response.body).to include 'エラーがあります。'
       end
     end
   end
