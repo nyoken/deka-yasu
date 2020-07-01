@@ -3,9 +3,19 @@
 .register {
   &__wrapper {
     @include one-page-wrapper;
+
+    &--edit {
+      @include one-page-wrapper;
+      height: 100%;
+    }
   }
 
   &__container {
     @include one-page-container;
+
+    &--edit {
+      @include one-page-container;
+      padding: 100px 180px;
+    }
   }
 }
