@@ -1,0 +1,20 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        contact:
+          attributes:
+            name:
+              blank: "が入力されていません。"
+            tel:
+              blank: "が入力されていません。"
+            email:
+              blank: "が入力されていません。"
+            content:
+              blank: "が入力されていません。"
+    attributes:
+      contact:
+        name: "氏名"
+        tel: "電話番号"
+        email: "メールアドレス"
+        content: "お問い合わせ内容"

@@ -4,6 +4,17 @@
     <p>以下を全てご記入の上、送信ボタンを押してください。</p>
     <section class="form">
       <%= form_for @contact, url: { action: 'confirm' } do |f| %>
+      <%= render "shared/error_messages", resource: @contact %>
+      <% if @contact.errors.any? %>
+        <div id="error_explanation">
+          <h3>入力した内容にエラーが<%= @contact.errors.count %>件あります。</h3>
+          <ul>
+            <% @contact.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
         <fieldset>
           <div class="form__item">
             <p><%= f.label :name, '氏名' %></p>
