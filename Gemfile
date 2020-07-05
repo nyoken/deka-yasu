@@ -63,6 +63,7 @@ end
 group :test do
   gem 'database_rewinder'
   gem 'capybara'
+  gem 'poltergeist'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
