@@ -10,18 +10,22 @@ Rails.application.routes.draw do
 
   resources :keeplist, only: [:index, :create, :destroy]
 
-  devise_for :users, controllers: { registrations: 'users/registrations',
-                                    sessions: 'users/sessions' }
+  devise_for :users, controllers: {
+    registrations: 'users/registrations',
+    sessions: 'users/sessions'
+  }
+
   devise_scope :user do
-    get 'login', to: 'devise/sessions#new'
-    post 'login', to: 'devise/sessions#create'
-    delete 'logout', to: 'devise/sessions#destroy'
+    get 'login', to: 'users/sessions#new'
+    post 'login', to: 'users/sessions#create'
+    delete 'logout', to: 'users/sessions#destroy'
 
-    get 'register', to: 'devise/registrations#new'
-    post 'register', to: 'devise/registrations#create'
-    delete 'register', to: 'devise/registrations#destroy'
+    get 'register', to: 'users/registrations#new'
+    post 'register', to: 'users/registrations#create'
+    delete 'register', to: 'users/registrations#destroy'
 
-    get 'edit_user', to: 'devise/registrations#edit'
+    get 'edit_user', to: 'users/registrations#edit'
   end
+  
   resources :shops, only: %i(index show)
 end

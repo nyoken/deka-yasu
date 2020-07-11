@@ -52,7 +52,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #アカウント登録後のリダイレクト先
   def after_sign_up_path_for(resource)
-    redirect_to root_path
+    root_path
   end
 
   # The path used after sign up for inactive accounts.
