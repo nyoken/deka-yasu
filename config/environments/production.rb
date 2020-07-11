@@ -65,16 +65,17 @@ Rails.application.configure do
   # 会員登録時にメールを送る
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'https://pay-tsuka.herokuapp.com'
-  config.action_mailer.default_url_options = { host: host }
+  host = "#{ENV['HEROKU_APPNAME']}.herokuapp.com"
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",
     port: 587,
-    authentication: :plain,
-    user_name: ENV['SENDGRID_USERNAME'],
-    password: ENV['SENDGRID_PASSWORD'],
-    enable_starttls_auto: true
+    user_name: ENV['MAIL_ADDRESS'],
+    password: ENV['MAIL_PASSWORD'],
+    authentication: "plain"
   }
+
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
