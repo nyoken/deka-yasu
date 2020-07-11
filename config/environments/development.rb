@@ -47,16 +47,15 @@ Rails.application.configure do
     enable_starttls_auto: true,
     address: "smtp.gmail.com",
     port: 587,
-    domain: 'gmail.com',
     user_name: ENV['MAIL_ADDRESS'],
     password: ENV['MAIL_PASSWORD'],
     authentication: "plain"
   }
 
-  # letter_opener設定
-  config.action_mailer.perform_caching = true
-  config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  config.action_mailer.delivery_method = :letter_opener_web
+  # letter_opener使うとき用
+  #config.action_mailer.perform_caching = true
+  #config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  #config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
