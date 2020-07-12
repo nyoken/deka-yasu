@@ -1,6 +1,14 @@
+<% if @user_keep_shops == [] %>
+<div class="keeplist__no-keep-wrapper">
+  <div class="keeplist__no-keep-container">
+    <h2>現在キープしているお店はありません</h2>
+  </div>
+</div>
+<% else %>
 <div class="keeplist__wrapper">
   <div class="keeplist__container">
     <h2>キープしたお店</h2>
     <%= render 'shared/rests', rests: @rests %>
   </div>
 </div>
+<% end %>
