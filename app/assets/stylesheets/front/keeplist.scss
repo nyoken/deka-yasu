@@ -14,4 +14,13 @@
   &__container {
     @include container;
   }
+
+  &__no-keep-wrapper {
+    @include one-page-wrapper;
+  }
+
+  &__no-keep-container {
+    @include one-page-container;
+    text-align: center;
+  }
 }
