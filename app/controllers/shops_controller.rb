@@ -14,6 +14,7 @@ class ShopsController < ApplicationController
       "e_money": 1,
       "hit_per_page": 20,
       "pref": params[:pref_code],
+      "areacode_s": params[:areacode_s],
       "category_l": params[:category_code],
       "offset_page": params[:page],
       "breakfast": params[:breakfast],
@@ -23,18 +24,12 @@ class ShopsController < ApplicationController
       "bottomless_cup": params[:bottomless_cup],
       "no_smoking": params[:no_smoking]
     }
-
-    if params[:areacode_s]
-      query_items.store("areacode_s", params[:areacode_s])
-    end
-
     query = query_items.to_query
 
     rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?" + query
     parse_json(rest_url)
-    @rests = @result["rest"]
     @total_hit_count = @result["total_hit_count"]
-    @rests = Kaminari.paginate_array(@rests, total_count: @total_hit_count).page(params[:page]).per(20)
+    @rests = Kaminari.paginate_array(@result["rest"], total_count: @total_hit_count).page(params[:page]).per(20)
 
     hit_per_page = @result["hit_per_page"]
     page_offset = @result["page_offset"]

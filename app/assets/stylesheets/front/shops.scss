@@ -116,7 +116,7 @@
     }
   }
 
-  &__restaurant-top {
+  &__restaurant-image-and-emoney {
     display: flex;
     margin-top: 30px;
 
@@ -165,7 +165,7 @@
     }
   }
 
-  &__restaurant--bottom {
+  &__restaurant-informaition {
     @include table;
   }
 
