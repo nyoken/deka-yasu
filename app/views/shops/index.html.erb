@@ -5,7 +5,7 @@
       <span><%= @total_hit_count %>件</span>中、<%= @start_count %>-<%= @end_count %>件を表示中
     </div>
     <%= render 'search-area', pref_code: @pref_code, areas: @areas %>
-    <%= render 'shared/rests', rests: @rests, user_keep_shops: @user_keep_shops, keep_shop_id: @keep_shop_id %>
+    <%= render 'shared/rests', rests: @rests %>
     <%= paginate @rests %>
   </div>
 </div>
