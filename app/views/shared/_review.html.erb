@@ -1,0 +1,23 @@
+<div class="reviews">
+  <h5>口コミ一覧</h5>
+  <% get_reviews(rest["id"]) %>
+  <% if @reviews.present? %>
+    <a class="reviews__op-cl" data-target="review-<%= index+1 %>">口コミを見る</a>
+    <ul id="review-<%= index+1 %>">
+      <% @reviews.each do |review| %>
+        <li class="reviews__item">
+          <p><%= review.body %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>まだ口コミはありません</p>
+  <% end %>
+  <div class="reviews__post">
+    <%= form_for @review do |f| %>
+      <%= f.hidden_field :shop_id, value: rest["id"] %>
+      <%= f.text_field :body %>
+      <%= f.submit '口コミ投稿', class: "submit-btn" %>
+    <% end %>
+  </div>
+</div>

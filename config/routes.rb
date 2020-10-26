@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
 
   resources :keeplist, only: [:index, :create, :destroy]
+  resources :shops, only: %i(index show)
+  resources :reviews
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -26,6 +28,4 @@ Rails.application.routes.draw do
 
     get 'edit_user', to: 'users/registrations#edit'
   end
-  
-  resources :shops, only: %i(index show)
 end

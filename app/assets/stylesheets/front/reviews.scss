@@ -1,0 +1,42 @@
+.reviews {
+  margin-top: 35px;
+
+  h5 {
+    width: 128px;
+    color: #364e96;
+    border: solid 3px #364e96;
+    padding: 8px;
+    border-radius: 0.5em;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display:none;
+
+    li {
+      list-style: none;
+    }
+  }
+
+  &__item {
+    background: #f8f8f8;
+    border-left: 5px dotted rgba(0,0,0,.1);
+    box-shadow: 0 0 0 5px #f8f8f8;
+    padding: 1em;
+    margin: 23px 0;
+
+    p {
+      margin: 0;
+      padding: 0;
+    }
+  }
+
+  &__post {
+    margin-top: 20px;
+  }
+
+  .openHere {
+    display:none;
+  }
+}

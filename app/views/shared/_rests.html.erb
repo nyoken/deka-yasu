@@ -1,5 +1,5 @@
 <% if rests %>
-  <% rests.each do |rest| %>
+  <% rests.each_with_index do |rest, index| %>
     <div class="shops__restaurant">
       <div class="shops__restaurant-title">
         <h3><%= link_to rest["name"], rest["url"] %><br class="d-block d-md-none">
@@ -37,6 +37,7 @@
           </dd>
         </dl>
       </div>
+      <%= render 'shared/review', rest: rest, index: index %>
       <% if user_signed_in? %>
         <% get_keep_shop_id(rest["id"]) %>
         <%= render 'shared/keep_btn', rest: rest, user_keep_shops: @user_keep_shops, keep_shop_id: @keep_shop_id %>
