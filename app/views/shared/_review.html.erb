@@ -7,7 +7,9 @@
       <% @reviews.each do |review| %>
         <li>
           <span class="reviews__user">【<%= review.user.present? ? review.user.username : "ゲスト" %>】</span>
-          <%= link_to "削除する", review, method: :delete, data: { confirm: "本当に削除しますか？" } if current_user.present? && current_user.admin? %>
+          <% if current_user.present? && (current_user.admin? || current_user == review.user) %>
+            <%= link_to "削除する", review, method: :delete, data: { confirm: "本当に削除しますか？" } %>
+          <% end %>
           <div class="reviews__body">
             <p><%= review.body %></p>
           </div>
