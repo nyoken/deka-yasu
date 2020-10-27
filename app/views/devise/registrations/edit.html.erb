@@ -1,39 +1,22 @@
 <div class="register__wrapper--edit">
   <div class="register__container--edit">
-
     <section class="form">
       <%= render "shared/error_messages", resource: resource %>
       <h2>アカウント編集</h2>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-
-        <fieldset>
-          <div class="form__item">
-            <p><%= f.label 'メールアドレス' %></p>
-            <p><%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %></p>
-          </div>
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
-          <div class="form__item">
-            <p><%= f.label '現在のパスワード' %></p>
-            <p><%= f.password_field :current_password, placeholder: "現在のパスワード" %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label '新しいパスワード' %></p>
-            <p><%= f.password_field :password, placeholder: "新しいパスワード" %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label '新しいパスワード（確認）' %></p>
-            <p><%= f.password_field :password_confirmation, placeholder: "確認のため、再度新しいパスワードを入力してください" %></p>
-          </div>
-          <%= f.submit "更新" %>
-        </fieldset>
+        <% if request.fullpath == edit_user_path %>
+          <%= render "devise/shared/edit_user_parameter", f: f %>
+        <% else %>
+          <%= render "devise/shared/edit_password_parameter", f: f %>
+        <% end %>
       <% end %>
-      <div class="form__delete">
-        <h4>【アカウント削除】</h4>
-        アカウント削除をご希望の方は、以下のボタンより削除をお願いいたします。
-        <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "削除してもよろしいですか？" }, method: :delete %>
-      </div>
+      <% if request.fullpath == edit_user_path %>
+        <div class="form__delete">
+          <h4>【アカウント削除】</h4>
+          アカウント削除をご希望の方は、以下のボタンより削除をお願いいたします。
+          <%= button_to "アカウントを削除する", registration_path(resource_name), data: { confirm: "削除してもよろしいですか？" }, method: :delete %>
+        </div>
+      <% end %>
       <%= link_to "戻る", :back %>
     </section>
   </div>

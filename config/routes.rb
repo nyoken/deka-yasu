@@ -27,5 +27,6 @@ Rails.application.routes.draw do
     delete 'register', to: 'users/registrations#destroy'
 
     get 'edit_user', to: 'users/registrations#edit'
+    get 'edit_password', to: 'users/registrations#edit'
   end
 end
