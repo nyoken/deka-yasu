@@ -5,8 +5,11 @@
     <a class="reviews__op-cl" data-target="review-<%= index+1 %>">口コミを見る</a>
     <ul id="review-<%= index+1 %>">
       <% @reviews.each do |review| %>
-        <li class="reviews__item">
-          <p><%= review.body %></p>
+        <li>
+          <span class="reviews__user">【<%= review.user.present? ? review.user.email : "ゲスト" %>】</span>
+          <div class="reviews__body">
+            <p><%= review.body %></p>
+          </div>
         </li>
       <% end %>
     </ul>
@@ -15,6 +18,7 @@
   <% end %>
   <div class="reviews__post">
     <%= form_for @review do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id if current_user.present? %>
       <%= f.hidden_field :shop_id, value: rest["id"] %>
       <%= f.text_field :body %>
       <%= f.submit '口コミ投稿', class: "submit-btn" %>

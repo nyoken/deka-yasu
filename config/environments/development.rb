@@ -32,30 +32,30 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # 会員登録時にメールを送る
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  if Rails.application.credentials.gmail.present?
-    mail_address = Rails.application.credentials.gmail[:address]
-    password = Rails.application.credentials.gmail[:password]
-  else
-    mail_address = 'admin@example.com'
-    password = 'password'
-  end
-
-  config.action_mailer.raise_delivery_errors = true
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    enable_starttls_auto: true,
-    address: "smtp.gmail.com",
-    port: 587,
-    user_name: ENV['MAIL_ADDRESS'],
-    password: ENV['MAIL_PASSWORD'],
-    authentication: "plain"
-  }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # if Rails.application.credentials.gmail.present?
+  #   mail_address = Rails.application.credentials.gmail[:address]
+  #   password = Rails.application.credentials.gmail[:password]
+  # else
+  #   mail_address = 'admin@example.com'
+  #   password = 'password'
+  # end
+  #
+  # config.action_mailer.raise_delivery_errors = true
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.smtp_settings = {
+  #   enable_starttls_auto: true,
+  #   address: "smtp.gmail.com",
+  #   port: 587,
+  #   user_name: ENV['MAIL_ADDRESS'],
+  #   password: ENV['MAIL_PASSWORD'],
+  #   authentication: "plain"
+  # }
 
   # letter_opener使うとき用
-  #config.action_mailer.perform_caching = true
-  #config.action_mailer.default_url_options = { host: 'localhost:3000' }
-  #config.action_mailer.delivery_method = :letter_opener_web
+  config.action_mailer.perform_caching = true
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  config.action_mailer.delivery_method = :letter_opener_web
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
@@ -82,5 +82,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # devise
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 end

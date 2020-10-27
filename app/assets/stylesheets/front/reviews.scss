@@ -16,15 +16,15 @@
 
     li {
       list-style: none;
+      margin-top: 30px;
     }
   }
 
-  &__item {
+  &__body {
     background: #f8f8f8;
     border-left: 5px dotted rgba(0,0,0,.1);
     box-shadow: 0 0 0 5px #f8f8f8;
     padding: 1em;
-    margin: 23px 0;
 
     p {
       margin: 0;
