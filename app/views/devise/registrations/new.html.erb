@@ -12,6 +12,10 @@
             <p><%= f.email_field :email, placeholder: "メールアドレス" %></p>
           </div>
           <div class="form__item">
+            <p><%= f.label 'ユーザーネーム' %></p>
+            <p><%= f.text_field :username, placeholder: "ユーザーネーム" %></p>
+          </div>
+          <div class="form__item">
             <p><%= f.label 'パスワード' %></p>
             <p><%= f.password_field :password, placeholder: "パスワード" %></p>
           </div>

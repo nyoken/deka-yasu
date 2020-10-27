@@ -7,6 +7,7 @@ class ShopsController < ApplicationController
     parse_json(area_url)
     @areas = @result["garea_small"].select{|garea| garea["pref"]["pref_code"] == params[:pref_code]}
     @pref_code = params[:pref_code] if params[:pref_code].present?
+    @review = Review.new
 
     # dotenvで設定したAPIキーを取得し、GURUNAVI_API用URL内に設定
     query_items = {

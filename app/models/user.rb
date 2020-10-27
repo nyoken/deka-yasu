@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   has_many :user_keep_shops, dependent: :destroy
   has_many :keep_shops, through: :user_keep_shops
+  has_many :reviews, dependent: :destroy
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

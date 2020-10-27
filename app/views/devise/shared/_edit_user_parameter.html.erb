@@ -1,0 +1,15 @@
+<fieldset>
+  <div class="form__item">
+    <p><%= f.label 'メールアドレス' %></p>
+    <p><%= f.email_field :email, autofocus: true, placeholder: "メールアドレス" %></p>
+  </div>
+  <div class="form__item">
+    <p><%= f.label 'ユーザーネーム' %></p>
+    <p><%= f.text_field :username, autofocus: true, placeholder: "ユーザーネーム" %></p>
+  </div>
+  <div class="form__item">
+    <p><%= f.label 'パスワード' %></p>
+    <p><%= f.password_field :current_password, placeholder: "パスワード" %></p>
+  </div>
+  <%= f.submit "変更" %>
+</fieldset>
