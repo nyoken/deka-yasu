@@ -7,7 +7,7 @@
         <% if request.fullpath == edit_user_path %>
           <%= render "devise/shared/edit_user_parameter", f: f %>
         <% else %>
-          <%= render "devise/shared/edit_password_parameter", f: f %>
+          <%= render "devise/shared/change_password_parameter", f: f %>
         <% end %>
       <% end %>
       <% if request.fullpath == edit_user_path %>

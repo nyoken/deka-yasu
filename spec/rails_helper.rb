@@ -36,6 +36,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
 
   config.include SessionMacros
+  config.include SearchMacros
 
   Capybara.javascript_driver = :poltergeist
   Capybara.register_driver :poltergeist do |app|

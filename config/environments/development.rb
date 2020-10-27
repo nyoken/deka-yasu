@@ -41,16 +41,16 @@ Rails.application.configure do
   #   password = 'password'
   # end
   #
-  # config.action_mailer.raise_delivery_errors = true
-  # config.action_mailer.delivery_method = :smtp
-  # config.action_mailer.smtp_settings = {
-  #   enable_starttls_auto: true,
-  #   address: "smtp.gmail.com",
-  #   port: 587,
-  #   user_name: ENV['MAIL_ADDRESS'],
-  #   password: ENV['MAIL_PASSWORD'],
-  #   authentication: "plain"
-  # }
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    enable_starttls_auto: true,
+    address: "smtp.gmail.com",
+    port: 587,
+    user_name: ENV['MAIL_ADDRESS'],
+    password: ENV['MAIL_PASSWORD'],
+    authentication: "plain"
+  }
 
   # letter_opener使うとき用
   config.action_mailer.perform_caching = true
