@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "PostReview", type: :feature do
   let(:user) { create(:user) }
+  let(:adminuser) { create(:user, admin: true) }
 
   scenario "未ログインユーザーで、お店に口コミを投稿する" do
     search
@@ -12,26 +13,16 @@ RSpec.feature "PostReview", type: :feature do
     # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
     expect(page).not_to have_css(".reviews__op-cl")
 
-    # フォームを記入して、投稿ボタンをクリック
-    find('#review_user_id', match: :first, visible: false).set(nil)
-    find('#review_shop_id', match: :first, visible: false).set("ha0n303")
-    fill_in "review[body]", with: "未ログイン口コミ", match: :first
-    click_button "口コミ投稿", match: :first
-
-    expect(page).to have_http_status :ok
-
-    expect(page).to have_text("口コミを見る")
-
-    # 遷移先に口コミ欄開閉のreviews__op-clクラスがあることを確認
-    expect(page).to have_css(".reviews__op-cl")
+    post_review(nil)
 
     # 口コミが追加されていることを確認
     within("#review-1") do
+      expect(page).not_to have_content "削除する"
       within(".reviews__user") do
         expect(page).to have_content "ゲスト"
       end
       within(".reviews__body") do
-        expect(page).to have_content "未ログイン口コミ"
+        expect(page).to have_content "口コミテスト"
       end
     end
   end
@@ -46,27 +37,48 @@ RSpec.feature "PostReview", type: :feature do
     # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
     expect(page).not_to have_css(".reviews__op-cl")
 
-    # フォームを記入して、投稿ボタンをクリック
-    find('#review_user_id', match: :first, visible: false).set(user.id)
-    find('#review_shop_id', match: :first, visible: false).set("ha0n303")
-    fill_in "review[body]", with: "ログイン済口コミ", match: :first
-    click_button "口コミ投稿", match: :first
-
-    expect(page).to have_http_status :ok
-
-    expect(page).to have_text("口コミを見る")
-
-    # 遷移先に口コミ欄開閉のreviews__op-clクラスがあることを確認
-    expect(page).to have_css(".reviews__op-cl")
+    post_review(user.id)
 
     # 口コミが追加されていることを確認
     within("#review-1") do
+      expect(page).not_to have_content "削除する"
       within(".reviews__user") do
         expect(page).to have_content user.username
       end
       within(".reviews__body") do
-        expect(page).to have_content "ログイン済口コミ"
+        expect(page).to have_content "口コミテスト"
       end
     end
+  end
+
+  scenario "管理者ユーザーで、お店に口コミを投稿する" do
+    login(adminuser, "testuser")
+
+    search
+
+    # 遷移先に口コミ投稿フォームがあることを確認
+    expect(page).to have_css(".new_review")
+
+    # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
+    expect(page).not_to have_css(".reviews__op-cl")
+
+    post_review(user.id)
+
+    # 口コミが追加されていることを確認
+    within("#review-1") do
+      expect(page).to have_content "削除する"
+      within(".reviews__user") do
+        expect(page).to have_content user.username
+      end
+      within(".reviews__body") do
+        expect(page).to have_content "口コミテスト"
+      end
+    end
+
+    click_on "削除する"
+
+    expect(page).to have_http_status :ok
+
+    expect(page).not_to have_text("口コミを見る")
   end
 end
