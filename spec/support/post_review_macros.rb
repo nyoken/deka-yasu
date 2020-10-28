@@ -1,9 +1,9 @@
 module PostReviewMacros
-  def post_review(user_id)
+  def post_review(user_id, body="口コミテスト")
     # フォームを記入して、投稿ボタンをクリック
     find('#review_user_id', match: :first, visible: false).set(user_id)
     find('#review_shop_id', match: :first, visible: false).set("ha0n303")
-    fill_in "review[body]", with: "口コミテスト", match: :first
+    fill_in "review[body]", with: body, match: :first
     click_button "口コミ投稿", match: :first
 
     expect(page).to have_http_status :ok
