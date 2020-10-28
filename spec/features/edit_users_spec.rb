@@ -12,6 +12,7 @@ RSpec.feature "EditUsers", type: :feature do
     fill_in "パスワード", with: user.password
     click_button "変更"
     expect(page).to have_content "アカウント情報を変更しました。"
+    logout
   end
 
   scenario "ユーザー情報編集ページからユーザーネームを変更する" do
@@ -22,6 +23,7 @@ RSpec.feature "EditUsers", type: :feature do
     fill_in "パスワード", with: user.password
     click_button "変更"
     expect(page).to have_content "アカウント情報を変更しました。"
+    logout
   end
 
   scenario "ユーザー情報編集ページから、アカウント削除を拒否し、その後削除する", js: true do
