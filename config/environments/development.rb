@@ -31,6 +31,8 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  config.webpacker.check_yarn_integrity = false
+
   # 会員登録時にメールを送る
   # config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   # if Rails.application.credentials.gmail.present?
