@@ -1,32 +1,25 @@
 version: '3'
 services:
   db:
-    image: postgres
-     # dbにマウントする設定ファイルのパスを指定
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
+    image: mysql:8.0
     environment:
-      POSTGRES_PASSWORD: ENV['POSTGRES_PASSWORD']
+      MYSQL_ROOT_PASSWORD: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql
   web:
-    # ComposeFileを実行してビルドされるときのパスを指定
-    build:
-      context: .
-      dockerfile: Dockerfile
-    command: /bin/bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
-    # マウントする設定ファイルのパスを指定
+    build: .
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
     ports:
       - "3000:3000"
     depends_on:
-      # webというServiceの前に、db、chromeというServiceを実行する
       - db
-      - chrome
-    # 標準入出力をアタッチ
     stdin_open: true
     tty: true
-  chrome:
-    # システムスペックを実行できるようにSeleniumのイメージを取得
-    image: selenium/standalone-chrome:3.141.59-dubnium
-    ports:
-      - 4444:4444
+volumes:
+  mysql-data:
+    driver: local
