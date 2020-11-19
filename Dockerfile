@@ -1,7 +1,7 @@
 # ベースとなるDocker Imageをruby:2.7に指定
 FROM ruby:2.7.0
 # nodejs、postgresql-client、yarn、chromium-driverのインストール
-RUN apt-get update -qq && apt-get install -y nodejs postgresql-client yarn chromium-driver
+RUN apt-get update -qq && apt-get install -y vim nodejs postgresql-client yarn chromium-driver
 # Docker内にmyappディレクトリを作成し、Dockerfileでのコマンド実行時の基準にmyappを指定
 RUN mkdir /myapp
 WORKDIR /myapp
