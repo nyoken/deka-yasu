@@ -6,7 +6,7 @@ services:
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: ENV['POSTGRES_PASSWORD']
+      POSTGRES_PASSWORD: password
   web:
     # ComposeFileを実行してビルドされるときのパスを指定
     build:
@@ -21,12 +21,3 @@ services:
     depends_on:
       # webというServiceの前に、db、chromeというServiceを実行する
       - db
-      - chrome
-    # 標準入出力をアタッチ
-    stdin_open: true
-    tty: true
-  chrome:
-    # システムスペックを実行できるようにSeleniumのイメージを取得
-    image: selenium/standalone-chrome:3.141.59-dubnium
-    ports:
-      - 4444:4444

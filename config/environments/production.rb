@@ -65,7 +65,7 @@ Rails.application.configure do
   # 会員登録時にメールを送る
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = "#{ENV['HEROKU_APPNAME']}.herokuapp.com"
+  host = "#{ENV['EC2_APPNAME']}.paytsuka.com"
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,

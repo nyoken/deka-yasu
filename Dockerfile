@@ -1,6 +1,8 @@
 # ベースとなるDocker Imageをruby:2.7に指定
 FROM ruby:2.7.0
 # nodejs、postgresql-client、yarn、chromium-driverのインストール
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y vim nodejs postgresql-client yarn chromium-driver
 # Docker内にmyappディレクトリを作成し、Dockerfileでのコマンド実行時の基準にmyappを指定
 RUN mkdir /myapp
