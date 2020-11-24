@@ -28,6 +28,10 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  # 独自ドメインからのアクセスを許可する
+  config.hosts << "www.pay-tsuka.tk"
+  config.hosts << "pay-tsuka-alb-1005445246.us-east-2.elb.amazonaws.com"
+
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
