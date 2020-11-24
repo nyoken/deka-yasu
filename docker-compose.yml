@@ -11,13 +11,28 @@ services:
     # ComposeFileを実行してビルドされるときのパスを指定
     build:
       context: .
-      dockerfile: Dockerfile
-    command: /bin/bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: /bin/bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
     # マウントする設定ファイルのパスを指定
     volumes:
-      - .:/myapp
-    ports:
-      - "3000:3000"
+      - .:/app
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
     depends_on:
       # webというServiceの前に、db、chromeというServiceを実行する
       - db
+  nginx:
+    build:
+      context: containers/nginx
+    volumes:
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+    ports:
+      - 80:80
+    depends_on:
+      - web
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
+  db-data:

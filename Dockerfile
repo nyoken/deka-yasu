@@ -5,19 +5,17 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y vim nodejs postgresql-client yarn chromium-driver
 # Docker内にmyappディレクトリを作成し、Dockerfileでのコマンド実行時の基準にmyappを指定
-RUN mkdir /myapp
-WORKDIR /myapp
+RUN mkdir /app
+WORKDIR /app
 # Docker内のmyappディレクトリにホストのGemfile、Gemfile.lockをコピーし、Gemを読み込んでアプリ全体もコピー
-COPY Gemfile /myapp/Gemfile
-COPY Gemfile.lock /myapp/Gemfile.lock
+COPY Gemfile /app/Gemfile
+COPY Gemfile.lock /app/Gemfile.lock
 RUN gem install bundler
 RUN bundle install
-COPY . /myapp
+COPY . /app
 # 特定のserver.pidファイルが存在するときにサーバーが再起動しないようにする問題を修正
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-# コンテナ起動時に使用するポートを定義
-EXPOSE 3000
-# Docker起動時にデフォルトで実行されるコマンドを定義
-CMD ["rails", "server", "-b", "0.0.0.0"]
+# puma.sockを配置するディレクトリを作成
+RUN mkdir -p tmp/sockets
