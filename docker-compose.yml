@@ -7,10 +7,11 @@ services:
       - ./tmp/db:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: password
-  web:
+  app:
     # ComposeFileを実行してビルドされるときのパスを指定
     build:
       context: .
+      dockerfile: Dockerfile_prd
     command: /bin/bash -c "rm -f tmp/pids/server.pid && bundle exec puma -C config/puma.rb"
     # マウントする設定ファイルのパスを指定
     volumes:
@@ -21,7 +22,11 @@ services:
     depends_on:
       # webというServiceの前に、db、chromeというServiceを実行する
       - db
-  nginx:
+    stdin_open: true
+    tty: true
+    environment:
+      RAILS_ENV: production
+  web:
     build:
       context: containers/nginx
     volumes:
@@ -30,7 +35,7 @@ services:
     ports:
       - 80:80
     depends_on:
-      - web
+      - app
 volumes:
   public-data:
   tmp-data:

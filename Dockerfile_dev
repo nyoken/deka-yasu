@@ -4,10 +4,10 @@ FROM ruby:2.7.0
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y vim nodejs postgresql-client yarn chromium-driver
-# Docker内にmyappディレクトリを作成し、Dockerfileでのコマンド実行時の基準にmyappを指定
+# Docker内にappディレクトリを作成し、Dockerfileでのコマンド実行時の基準にmyappを指定
 RUN mkdir /app
 WORKDIR /app
-# Docker内のmyappディレクトリにホストのGemfile、Gemfile.lockをコピーし、Gemを読み込んでアプリ全体もコピー
+# Docker内のappディレクトリにホストのGemfile、Gemfile.lockをコピーし、Gemを読み込んでアプリ全体もコピー
 COPY Gemfile /app/Gemfile
 COPY Gemfile.lock /app/Gemfile.lock
 RUN gem install bundler
@@ -17,5 +17,7 @@ COPY . /app
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-# puma.sockを配置するディレクトリを作成
-RUN mkdir -p tmp/sockets
+# コンテナ起動時に使用するポートを定義
+EXPOSE 3000
+# Docker起動時にデフォルトで実行されるコマンドを定義
+CMD ["rails", "server", "-b", "0.0.0.0"]
