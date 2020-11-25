@@ -65,14 +65,14 @@ Rails.application.configure do
   # 会員登録時にメールを送る
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = "#{ENV['EC2_APPNAME']}.paytsuka.com"
+  host = Rails.application.credentials.fqdn[:root]
   config.action_mailer.default_url_options = { host: host, protocol: 'https' }
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
     address: "smtp.gmail.com",
     port: 587,
-    user_name: ENV['MAIL_ADDRESS'],
-    password: ENV['MAIL_PASSWORD'],
+    user_name: Rails.application.credentials.mail[:address],
+    password: Rails.application.credentials.mail[:password],
     authentication: "plain"
   }
 
