@@ -3,7 +3,7 @@ class ShopsController < ApplicationController
   before_action :set_keeplist, only: [:index]
 
   def index
-    area_url = "https://api.gnavi.co.jp/master/GAreaSmallSearchAPI/v3/?keyid=#{ENV['GURUNAVI_API_KEY']}"
+    area_url = "https://api.gnavi.co.jp/master/GAreaSmallSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}"
     parse_json(area_url)
     @areas = @result["garea_small"].select{|garea| garea["pref"]["pref_code"] == params[:pref_code]}
     @pref_code = params[:pref_code] if params[:pref_code].present?
@@ -11,7 +11,7 @@ class ShopsController < ApplicationController
 
     # dotenvで設定したAPIキーを取得し、GURUNAVI_API用URL内に設定
     query_items = {
-      "keyid": ENV['GURUNAVI_API_KEY'],
+      "keyid": Rails.application.credentials.gurunavi[:api_key],
       "e_money": 1,
       "hit_per_page": 20,
       "pref": params[:pref_code],
