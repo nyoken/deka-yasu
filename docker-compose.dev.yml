@@ -1,5 +1,12 @@
 version: '3'
 services:
+  db:
+    image: postgres
+     # dbにマウントする設定ファイルのパスを指定
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: password
   dev:
     # ComposeFileを実行してビルドされるときのパスを指定
     build:

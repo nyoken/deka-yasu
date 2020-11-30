@@ -1,12 +1,5 @@
 version: '3'
 services:
-  db:
-    image: postgres
-     # dbにマウントする設定ファイルのパスを指定
-    volumes:
-      - ./tmp/db:/var/lib/postgresql/data
-    environment:
-      POSTGRES_PASSWORD: password
   app:
     # ComposeFileを実行してビルドされるときのパスを指定
     build:
@@ -19,9 +12,6 @@ services:
       - public-data:/app/public
       - tmp-data:/app/tmp
       - log-data:/app/log
-    depends_on:
-      # webというServiceの前に、db、chromeというServiceを実行する
-      - db
     stdin_open: true
     tty: true
     environment:
