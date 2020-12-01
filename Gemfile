@@ -23,9 +23,6 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
-# 環境変数定義用
-gem 'dotenv-rails'
-
 # ページネーション
 gem 'kaminari'
 
@@ -35,9 +32,6 @@ gem "devise"
 # deviseの日本語化
 gem 'devise-i18n'
 gem 'devise-i18n-views'
-
-# アプリ名変更
-gem 'rename'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -50,7 +44,6 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 3.6.0'
   gem "factory_bot_rails"
-  gem 'rails-erd'
 end
 
 group :development do
