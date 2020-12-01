@@ -1,0 +1,9 @@
+test:
+  adapter: postgresql
+  encoding: unicode
+  host: 127.0.0.1
+  port: 5432
+  username: root
+  password: password
+  database: ci_test
+  pool: 5
