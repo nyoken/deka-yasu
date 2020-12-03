@@ -9,6 +9,7 @@ class KeeplistController < ApplicationController
       rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}&id=#{@keep_shops}"
       parse_json(rest_url)
       @rests = @result["rest"]
+      @review = Review.new
     end
   end
 
