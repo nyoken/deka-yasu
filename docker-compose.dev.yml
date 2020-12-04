@@ -22,3 +22,10 @@ services:
     depends_on:
       # webというServiceの前に、db、chromeというServiceを実行する
       - db
+    tty: true
+    environment:
+      - "SELENIUM_DRIVER_URL=http://chromedriver:4444"
+  chromedriver:
+    image: selenoid/chrome
+    ports:
+      - "4444:4444"

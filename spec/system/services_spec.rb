@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Services", type: :feature do
-  scenario "サービス紹介ページにアクセスできる" do
+RSpec.describe "Services", type: :system do
+  it "サービス紹介ページにアクセスできる" do
     # TOPページにアクセス
     visit root_path
 

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Contacts", type: :feature do
+RSpec.feature "Contacts", type: :system do
   scenario "お問い合わせページから問い合わせを作成する" do
     # TOPページにアクセス
     visit root_path

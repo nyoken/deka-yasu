@@ -21,6 +21,8 @@ ja:
               confirmation: "がパスワードと一致しません。"
             confirmation_token:
               invalid: "は有効でありません。"
+      messages:
+        record_invalid: "バリデーションに失敗しました: %{errors}"
     attributes:
       user:
         current_password: "現在のパスワード"
