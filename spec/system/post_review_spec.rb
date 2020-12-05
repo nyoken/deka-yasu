@@ -2,88 +2,63 @@ require 'rails_helper'
 
 RSpec.describe "PostReview", type: :system do
   let(:user) { create(:user) }
-  let(:adminuser) { create(:user, admin: true) }
+  let(:another_user) { create(:user) }
+  let(:admin_user) { create(:user, admin: true) }
 
   it "未ログインユーザーで、お店に口コミを投稿する" do
     search
-
-    # 遷移先に口コミ投稿フォームがあることを確認
-    expect(page).to have_css(".new_review")
-
-    # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
-    expect(page).not_to have_css(".reviews__op-cl")
-
     post_review(nil)
 
     # 口コミが追加されていることを確認
     within("#review-1") do
       expect(page).not_to have_content "削除する"
-      within(".reviews__user") do
-        expect(page).to have_content "ゲスト"
-      end
-      within(".reviews__body") do
-        expect(page).to have_content "口コミテスト"
-      end
     end
   end
 
-  it "ログイン済ユーザーで口コミを投稿し、別ユーザーでも投稿した後、削除する", js: true do
+  it "ログイン済ユーザーで口コミを投稿し、別ユーザーでも投稿した後、削除する" do
+    # userでログインして口コミを投稿
     login(user, "testuser")
     search
-
-    # 遷移先に口コミ投稿フォームがあることを確認
-    expect(page).to have_css(".new_review")
-
-    # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
-    expect(page).not_to have_css(".reviews__op-cl")
-
-    post_review(user.id)
-
-    # 口コミが追加されていることを確認
+    post_review(user.id, user.username)
     within("#review-1") do
       expect(page).to have_content "削除する"
-      within(".reviews__user", match: :first) do
-        expect(page).to have_content user.username
-      end
-      expect(page).to have_content "口コミテスト"
     end
+    logout
 
-    page.dismiss_confirm("本当に削除しますか？") do
-      click_on"削除する"
+    # another_userでログインすると口コミ削除リンクがないことを確認
+    login(another_user, "testuser")
+    search
+    # 口コミ削除リンクがないことを確認
+    within("#review-1") do
+      expect(page).not_to have_content "削除する"
     end
+    logout
 
-    page.accept_confirm do
-      click_on "削除する"
-    end
+    # 再びuserでログインして口コミを削除
+    login(user, "testuser")
+    search
+    click_on "削除する"
 
     # 口コミが削除されていることを確認
     expect(page).not_to have_css(".reviews__op-cl")
   end
 
   it "管理者ユーザーで、お店に口コミを投稿して削除する" do
-    login(adminuser, "testuser")
-
+    # userでログインして口コミを投稿
+    login(user, "testuser")
     search
-
-    # 遷移先に口コミ投稿フォームがあることを確認
-    expect(page).to have_css(".new_review")
-
-    # 遷移先に口コミ欄開閉のreviews__op-clクラスがないことを確認
-    expect(page).not_to have_css(".reviews__op-cl")
-
-    post_review(user.id)
-
-    # 口コミが追加されていることを確認
+    post_review(user.id, user.username)
     within("#review-1") do
       expect(page).to have_content "削除する"
-      within(".reviews__user") do
-        expect(page).to have_content user.username
-      end
-      within(".reviews__body") do
-        expect(page).to have_content "口コミテスト"
-      end
     end
+    logout
 
+    # admin_userでログインして口コミが削除できることを確認
+    login(admin_user, "testuser")
+    search
+    within("#review-1") do
+      expect(page).to have_content "削除する"
+    end
     click_on "削除する"
 
     expect(page).not_to have_text("口コミを見る")
