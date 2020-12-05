@@ -1,15 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature "Contacts", type: :system do
-  scenario "お問い合わせページから問い合わせを作成する" do
+RSpec.describe "Contacts", type: :system do
+  it "お問い合わせページから問い合わせを作成する" do
     # TOPページにアクセス
     visit root_path
 
     # お問い合わせリンクをクリック
     click_link "お問い合わせ"
-
-    # ステータスが成功なのを確認
-    expect(page).to have_http_status :ok
 
     # 遷移先にcontact__wrapperクラスがあることを確認
     expect(page).to have_css(".contact__wrapper")

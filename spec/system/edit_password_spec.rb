@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "EditPassword", type: :feature do
+RSpec.describe "EditPassword", type: :system do
   # Userを用意
   let(:user) { create(:user) }
 
-  scenario "パスワード編集ページからパスワードを変更し、ログアウト後に新しいパスワードでログインする" do
+  it "パスワード編集ページからパスワードを変更し、ログアウト後に新しいパスワードでログインする" do
     login(user, "testuser")
     visit change_password_path
     fill_in "メールアドレス", with: user.email

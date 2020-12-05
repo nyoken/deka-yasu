@@ -274,7 +274,7 @@ DEPENDENCIES
   aws-sdk-s3
   bootsnap (>= 1.4.2)
   byebug
-  capybara (>= 2.15)
+  capybara (>= 3.17)
   devise
   devise-i18n
   devise-i18n-views

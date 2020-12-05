@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "PostReview", type: :feature do
+RSpec.describe "PostReview", type: :system do
   let(:user) { create(:user) }
   let(:adminuser) { create(:user, admin: true) }
 
-  scenario "未ログインユーザーで、お店に口コミを投稿する" do
+  it "未ログインユーザーで、お店に口コミを投稿する" do
     search
 
     # 遷移先に口コミ投稿フォームがあることを確認
@@ -27,7 +27,7 @@ RSpec.feature "PostReview", type: :feature do
     end
   end
 
-  scenario "ログイン済ユーザーで口コミを投稿し、別ユーザーでも投稿した後、削除する", js: true do
+  it "ログイン済ユーザーで口コミを投稿し、別ユーザーでも投稿した後、削除する", js: true do
     login(user, "testuser")
     search
 
@@ -56,13 +56,11 @@ RSpec.feature "PostReview", type: :feature do
       click_on "削除する"
     end
 
-    expect(page).to have_http_status :ok
-
     # 口コミが削除されていることを確認
     expect(page).not_to have_css(".reviews__op-cl")
   end
 
-  scenario "管理者ユーザーで、お店に口コミを投稿して削除する" do
+  it "管理者ユーザーで、お店に口コミを投稿して削除する" do
     login(adminuser, "testuser")
 
     search
@@ -87,8 +85,6 @@ RSpec.feature "PostReview", type: :feature do
     end
 
     click_on "削除する"
-
-    expect(page).to have_http_status :ok
 
     expect(page).not_to have_text("口コミを見る")
   end

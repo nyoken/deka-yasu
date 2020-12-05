@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "SingupLoginLogout", type: :feature do
-  background do
+RSpec.describe "SingupLoginLogout", type: :system do
+  around do
     ActionMailer::Base.deliveries.clear
   end
 
@@ -10,12 +10,9 @@ RSpec.feature "SingupLoginLogout", type: :feature do
     body[/http[^"]+/]
   end
 
-  scenario "サインアップ後にログインし、ログアウトする" do
+  it "サインアップ後にログインし、ログアウトする" do
     # TOPページにアクセス
     visit root_path
-
-    # ステータスが成功なのを確認
-    expect(page).to have_http_status :ok
 
     # 無料会員ボタンをクリック
     click_link "無料会員登録", match: :first
