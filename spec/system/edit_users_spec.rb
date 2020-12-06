@@ -26,15 +26,10 @@ RSpec.describe "EditUsers", type: :system do
     logout
   end
 
-  it "ユーザー情報編集ページから、アカウント削除を拒否し、その後削除する", js: true do
+  it "ユーザー情報編集ページから、アカウント削除を拒否し、その後削除する" do
     login(user, "testuser")
     visit edit_user_path
-    page.dismiss_confirm do
-      click_button "アカウントを削除する"
-    end
-    page.accept_confirm do
-      click_button "アカウントを削除する"
-    end
+    click_on "アカウントを削除する"
     expect(page).to have_content "アカウントを削除しました。またのご利用をお待ちしております。"
   end
 end
