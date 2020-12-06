@@ -6,8 +6,12 @@ RSpec.describe "Shops", type: :request do
       it '県とカテゴリーでの絞り込みができる' do
         get shops_path, params: { pref_code: "PREF01", category_code: "RSFST09000" }
         expect(response.status).to eq 200
-        # PREF01（北海道）, category_code: RSFST09000（居酒屋） の店が取得される
-        expect(response.body).to include '海鮮和食 個室居酒屋 世海 すすきの店'
+
+        # 札幌駅が表示されていることを確認
+        within("#areacode_s") do
+          expect(response.body).to include '札幌駅'
+        end
+
         # PREF01（北海道）, category_code: RSFST11000（イタリアン） の店が取得されない
         expect(response.body).not_to include 'Italian×Spanish グラニタ'
         # PREF13（東京）, category_code: RSFST09000（居酒屋） の店が取得されない
@@ -17,9 +21,10 @@ RSpec.describe "Shops", type: :request do
 
     context "詳細条件での絞り込み" do
       it 'エリアでの絞り込みができる' do
+        # 室蘭エリアで絞り込む
         get shops_path, params: {
           pref_code: "PREF01",
-          areacode_s: "AREAS5502",
+          areacode_s: "AREAS5909",
           breakfast: 0,
           lunch: 0,
           midnight: 0,
@@ -30,8 +35,6 @@ RSpec.describe "Shops", type: :request do
         }
 
         expect(response.status).to eq 200
-        # PREF01（北海道）, area_code: AREAS5502（札幌駅） の店が取得される
-        expect(response.body).to include '隠れ家個室居酒屋 楓（かえで） 札幌駅前店'
         # PREF01（北海道）, area_code: AREAS5708（苫小牧） の店が取得されない
         expect(response.body).not_to include '甘太郎 苫小牧店'
       end
