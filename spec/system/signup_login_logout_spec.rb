@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "SingupLoginLogout", type: :system do
-  around do
+  after(:all) do
     ActionMailer::Base.deliveries.clear
   end
 

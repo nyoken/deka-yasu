@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.describe "EditUsers", type: :system do
-  around do
+RSpec.describe "ResetPassword", type: :system do
+  after(:all) do
     ActionMailer::Base.deliveries.clear
   end
 
