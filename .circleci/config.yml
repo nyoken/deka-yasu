@@ -28,6 +28,10 @@ jobs:
         paths:
         - ./vendor/bundle
         key: v1-dependencies-{{ checksum "Gemfile.lock" }}
+    - run:
+    # Webpacker用にyarnをinstall
+        name: Yarn Install
+        command: yarn install --cache-folder ~/.cache/yarn
     # Database setup
     - run:
         name: Prepare db
