@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def parse_json(url)
-    url = URI.encode(url) #エスケープ
+    url = Addressable::URI.encode(url) #エスケープ
     uri = URI.parse(url)
     json = Net::HTTP.get(uri)
     @result = JSON.parse(json)
