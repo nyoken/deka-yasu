@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.feature "EditUsers", type: :feature do
+RSpec.describe "EditUsers", type: :system do
   # Userを用意
   let(:user) { create(:user) }
 
-  scenario "ユーザー情報編集ページからメールアドレスを変更する" do
+  it "ユーザー情報編集ページからメールアドレスを変更する" do
     login(user, "testuser")
     visit edit_user_path
     fill_in "メールアドレス", with: "newTEST@example.com"
@@ -15,7 +15,7 @@ RSpec.feature "EditUsers", type: :feature do
     logout
   end
 
-  scenario "ユーザー情報編集ページからユーザーネームを変更する" do
+  it "ユーザー情報編集ページからユーザーネームを変更する" do
     login(user, "testuser")
     visit edit_user_path
     fill_in "メールアドレス", with: user.email
@@ -26,7 +26,7 @@ RSpec.feature "EditUsers", type: :feature do
     logout
   end
 
-  scenario "ユーザー情報編集ページから、アカウント削除を拒否し、その後削除する", js: true do
+  it "ユーザー情報編集ページから、アカウント削除を拒否し、その後削除する", js: true do
     login(user, "testuser")
     visit edit_user_path
     page.dismiss_confirm do

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "EditUsers", type: :feature do
-  background do
+RSpec.describe "ResetPassword", type: :system do
+  after(:all) do
     ActionMailer::Base.deliveries.clear
   end
 
@@ -11,7 +11,7 @@ RSpec.feature "EditUsers", type: :feature do
   end
 
   let(:user) { create(:user) }
-  scenario "パスワード再設定ページでパスワードを変更し、変更後のパスワードでログインする" do
+  it "パスワード再設定ページでパスワードを変更し、変更後のパスワードでログインする" do
     visit new_user_password_path
     fill_in "メールアドレス", with: user.email
     expect { click_button "送信" }.to change { ActionMailer::Base.deliveries.size }.by(1)

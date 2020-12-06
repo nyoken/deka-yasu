@@ -22,3 +22,4 @@ services:
     depends_on:
       # webというServiceの前に、db、chromeというServiceを実行する
       - db
+    tty: true

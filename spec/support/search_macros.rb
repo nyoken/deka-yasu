@@ -9,8 +9,5 @@ module SearchMacros
 
     # 検索ボタンをクリック
     click_button "検索"
-
-    # ステータスが成功なのを確認
-    expect(page).to have_http_status :ok
   end
 end

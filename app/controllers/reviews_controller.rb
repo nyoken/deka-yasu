@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :admin_user, only: :destroy
+  before_action :correct_user, only: :destroy
 
   def create
     @review = Review.new(review_params)
@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
 
   def destroy
     Review.find(params[:id]).destroy
-    flash[:success] = "キープリストから削除しました"
+    flash[:success] = "口コミを削除しました"
     redirect_back(fallback_location: root_path)
   end
 
@@ -17,8 +17,8 @@ class ReviewsController < ApplicationController
   def review_params
     params.require(:review).permit(:shop_id, :user_id, :body)
   end
-  
-  def admin_user
-    redirect_to(root_path) unless current_user.admin?
+
+  def correct_user
+    redirect_to(root_path) unless current_user.admin? || current_user.id == Review.find(params[:id]).user.id
   end
 end
