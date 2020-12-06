@@ -1,7 +1,0 @@
-test:
-  adapter: postgresql
-  encoding: unicode
-  host: '127.0.0.1'
-  username: root
-  password: password
-  pool: 5
