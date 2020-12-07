@@ -16,9 +16,7 @@ class KeeplistController < ApplicationController
   end
 
   def create
-    unless keep_shop = KeepShop.find_by(shop_id: params[:shop_id])
-      keep_shop = KeepShop.create(shop_id: params[:shop_id])
-    end
+    keep_shop = KeepShop.create_or_find_by(shop_id: params[:shop_id])
 
     if current_user.keep_shops.size >= KeepShop::KEEP_SHOP_LIMIT
       flash[:danger] = '上限（10件）に達しているため、キープリストに追加できません。'
