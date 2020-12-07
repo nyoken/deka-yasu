@@ -6,8 +6,16 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  def parse_json(url)
-    url = Addressable::URI.encode(url) # エスケープ
+  def get_gurunavi_response(element, query = nil)
+    fqdn = 'https://api.gnavi.co.jp'
+    version = 'v3'
+    keyid = "keyid=#{Rails.application.credentials.gurunavi[:api_key]}"
+    if element == 'RestSearchAPI'
+      api_url = "#{fqdn}/#{element}/#{version}/?#{keyid}&#{query}"
+    else
+      api_url = "#{fqdn}/master/#{element}/#{version}/?#{keyid}"
+    end
+    url = Addressable::URI.encode(api_url)
     uri = URI.parse(url)
     json = Net::HTTP.get(uri)
     @result = JSON.parse(json)

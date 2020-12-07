@@ -8,8 +8,8 @@ class KeeplistController < ApplicationController
     if @user_keep_shops == []
       @rests = []
     else
-      rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}&id=#{@keep_shops}"
-      parse_json(rest_url)
+      query = "id=#{@keep_shops}"
+      get_gurunavi_response('RestSearchAPI', query)
       @rests = @result['rest']
       @review = Review.new
     end

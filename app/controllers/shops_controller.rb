@@ -5,15 +5,13 @@ class ShopsController < ApplicationController
   before_action :set_keeplist, only: [:index]
 
   def index
-    area_url = "https://api.gnavi.co.jp/master/GAreaSmallSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}"
-    parse_json(area_url)
+    get_gurunavi_response('GAreaSmallSearchAPI')
     @areas = @result['garea_small'].select { |garea| garea['pref']['pref_code'] == params[:pref_code]}
     @pref_code = params[:pref_code] if params[:pref_code].present?
     @review = Review.new
 
     # dotenvで設定したAPIキーを取得し、GURUNAVI_API用URL内に設定
     query_items = {
-      "keyid": Rails.application.credentials.gurunavi[:api_key],
       "e_money": 1,
       "hit_per_page": 20,
       "pref": params[:pref_code],
@@ -29,8 +27,7 @@ class ShopsController < ApplicationController
     }
     query = query_items.to_query
 
-    rest_url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/?' + query
-    parse_json(rest_url)
+    get_gurunavi_response('RestSearchAPI', query)
     @total_hit_count = @result['total_hit_count']
     if @result['rest'].present?
       @rests = Kaminari.paginate_array(@result['rest'], total_count: @total_hit_count).page(params[:page]).per(20)
