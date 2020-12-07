@@ -35,3 +35,7 @@ Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
     - "config/environments/*"
+
+MethodLength:
+  CountComments: true
+  Max: 15
