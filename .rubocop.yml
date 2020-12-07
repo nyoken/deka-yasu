@@ -34,3 +34,4 @@ Lint/ShadowedException:
 Metrics/BlockLength:
   Exclude:
     - "spec/**/*"
+    - "config/environments/*"
