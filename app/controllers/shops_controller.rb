@@ -5,7 +5,7 @@ class ShopsController < ApplicationController
   def index
     area_url = "https://api.gnavi.co.jp/master/GAreaSmallSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}"
     parse_json(area_url)
-    @areas = @result["garea_small"].select{|garea| garea["pref"]["pref_code"] == params[:pref_code]}
+    @areas = @result['garea_small'].select { |garea| garea['pref']['pref_code'] == params[:pref_code]}
     @pref_code = params[:pref_code] if params[:pref_code].present?
     @review = Review.new
 
@@ -27,13 +27,13 @@ class ShopsController < ApplicationController
     }
     query = query_items.to_query
 
-    rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?" + query
+    rest_url = 'https://api.gnavi.co.jp/RestSearchAPI/v3/?' + query
     parse_json(rest_url)
-    @total_hit_count = @result["total_hit_count"]
-    if @result["rest"].present?
-      @rests = Kaminari.paginate_array(@result["rest"], total_count: @total_hit_count).page(params[:page]).per(20)
-      hit_per_page = @result["hit_per_page"]
-      page_offset = @result["page_offset"]
+    @total_hit_count = @result['total_hit_count']
+    if @result['rest'].present?
+      @rests = Kaminari.paginate_array(@result['rest'], total_count: @total_hit_count).page(params[:page]).per(20)
+      hit_per_page = @result['hit_per_page']
+      page_offset = @result['page_offset']
 
       @start_count = hit_per_page * (page_offset - 1) + 1
       @end_count = @total_hit_count < hit_per_page * page_offset ? @total_hit_count : hit_per_page * page_offset

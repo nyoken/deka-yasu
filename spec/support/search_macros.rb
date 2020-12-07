@@ -8,6 +8,6 @@ module SearchMacros
     select '居酒屋', from: 'category_code'
 
     # 検索ボタンをクリック
-    click_button "検索"
+    click_button '検索'
   end
 end

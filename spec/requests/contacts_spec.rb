@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Contacts", type: :request do
+RSpec.describe 'Contacts', type: :request do
   # contactを用意
   let(:contact) { create(:contact) }
   # 正規なパラメータを用意

@@ -1,6 +1,6 @@
 class KeeplistController < ApplicationController
   include ShopsHelper
-  before_action :set_keeplist, only: [:index, :destroy]
+  before_action :set_keeplist, only: %i[index destroy]
 
   def index
     if @user_keep_shops == []
@@ -8,7 +8,7 @@ class KeeplistController < ApplicationController
     else
       rest_url = "https://api.gnavi.co.jp/RestSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}&id=#{@keep_shops}"
       parse_json(rest_url)
-      @rests = @result["rest"]
+      @rests = @result['rest']
       @review = Review.new
     end
   end
@@ -24,14 +24,14 @@ class KeeplistController < ApplicationController
     end
 
     current_user.like(keep_shop)
-    flash[:success] = "キープリストに追加しました"
+    flash[:success] = 'キープリストに追加しました'
     redirect_back(fallback_location: root_path)
   end
 
   def destroy
     keep_shop = KeepShop.find_by(shop_id: params[:id])
     current_user.unlike(keep_shop)
-    flash[:success] = "キープリストから削除しました"
+    flash[:success] = 'キープリストから削除しました'
     redirect_back(fallback_location: root_path)
   end
 end

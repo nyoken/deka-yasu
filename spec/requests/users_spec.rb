@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Users", type: :request do
+RSpec.describe 'Users', type: :request do
   # Userを用意
   let(:user) { create(:user) }
   # 正規なパラメータを用意

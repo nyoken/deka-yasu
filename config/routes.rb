@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   root 'home#index'
   get 'service', to: 'static#service'
@@ -8,9 +8,9 @@ Rails.application.routes.draw do
   get 'contact/complete', to: 'contact#complete'
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
 
-  resources :keeplist, only: [:index, :create, :destroy]
-  resources :shops, only: %i(index show)
-  resources :reviews, only: %i(create destroy)
+  resources :keeplist, only: %i[index create destroy]
+  resources :shops, only: %i[index show]
+  resources :reviews, only: %i[create destroy]
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
