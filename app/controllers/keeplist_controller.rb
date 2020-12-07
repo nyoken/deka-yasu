@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KeeplistController < ApplicationController
   include ShopsHelper
   before_action :set_keeplist, only: %i[index destroy]

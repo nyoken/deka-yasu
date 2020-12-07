@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module SessionMacros
   def login(user, password)
     visit login_path

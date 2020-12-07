@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   # Userモデルの一例を作成
   factory :user do

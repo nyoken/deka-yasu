@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HomeController < ApplicationController
   def index
     pref_url = "https://api.gnavi.co.jp/master/PrefSearchAPI/v3/?keyid=#{Rails.application.credentials.gurunavi[:api_key]}"

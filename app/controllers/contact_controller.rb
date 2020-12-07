@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ContactController < ApplicationController
   before_action :set_contact, only: %i[confirm create]
 

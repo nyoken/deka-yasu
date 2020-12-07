@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ShopsController < ApplicationController
   include ShopsHelper
   before_action :set_keeplist, only: [:index]

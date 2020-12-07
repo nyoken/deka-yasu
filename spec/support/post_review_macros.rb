@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module PostReviewMacros
   def post_review(user_id, username = 'ゲスト', body = '口コミテスト')
     # 遷移先に口コミ投稿フォームがあることを確認

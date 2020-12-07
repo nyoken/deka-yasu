@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class User < ApplicationRecord
   has_many :user_keep_shops, dependent: :destroy
   has_many :keep_shops, through: :user_keep_shops
