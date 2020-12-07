@@ -18,12 +18,8 @@ module PostReviewMacros
     expect(page).to have_text('口コミを見る')
     expect(page).to have_css('.reviews__op-cl')
     within('#review-1') do
-      within('.reviews__user') do
-        expect(page).to have_content(username)
-      end
-      within('.reviews__body') do
-        expect(page).to have_content(body)
-      end
+      expect(page).to have_content(username)
+      expect(page).to have_content(body)
     end
   end
 end
