@@ -30,3 +30,7 @@ Bundler/OrderedGems:
 
 Lint/ShadowedException:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - "spec/**/*"
