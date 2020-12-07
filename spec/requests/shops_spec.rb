@@ -32,7 +32,6 @@ RSpec.describe 'Shops', type: :request do
           midnight: 0,
           buffet: 0,
           bottomless_cup: 0,
-          bottomless_cup: 0,
           no_smoking: 0
         }
 
@@ -49,7 +48,6 @@ RSpec.describe 'Shops', type: :request do
           lunch: 0,
           midnight: 0,
           buffet: 0,
-          bottomless_cup: 0,
           bottomless_cup: 0,
           no_smoking: 1
         }
@@ -68,7 +66,6 @@ RSpec.describe 'Shops', type: :request do
           lunch: 1,
           midnight: 1,
           buffet: 1,
-          bottomless_cup: 1,
           bottomless_cup: 1,
           no_smoking: 1
         }
