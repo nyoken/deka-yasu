@@ -1,0 +1,2 @@
+module EmoneyHelper
+end
