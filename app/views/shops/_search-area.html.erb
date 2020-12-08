@@ -1,7 +1,8 @@
 <div class="shops__search-area">
-  <%= image_tag '/assets/shops/lupe.png', alt: '虫眼鏡' %><span>さらにエリアで絞り込む</span>
+  <%= image_tag '/assets/shops/lupe.png', alt: '虫眼鏡' %><span>さらに絞り込む</span>
   <%= form_with(url: shops_path, local: true, method: :get) do |f| %>
     <%= f.hidden_field :pref_code, value: pref_code %>
+    <%= f.hidden_field :category_code, value: category_code %>
     <%= f.select :areacode_s, options_for_select(areas.map{ |area| [area["areaname_s"], area["areacode_s"]]}) %><br />
     <section class="shops__search-area--checkbox">
       <div class="col-md-4">

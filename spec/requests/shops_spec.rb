@@ -22,10 +22,11 @@ RSpec.describe 'Shops', type: :request do
     end
 
     context '詳細条件での絞り込み' do
-      it 'エリアでの絞り込みができる' do
+      it 'さらなる絞り込みができる' do
         # 室蘭エリアで絞り込む
         get shops_path, params: {
           pref_code: 'PREF01',
+          category_code: 'RSFST09000',
           areacode_s: 'AREAS5909',
           breakfast: 0,
           lunch: 0,
@@ -43,6 +44,7 @@ RSpec.describe 'Shops', type: :request do
       it 'ラジオボタンによる絞り込み' do
         get shops_path, params: {
           pref_code: 'PREF01',
+          category_code: 'RSFST09000',
           areacode_s: 'AREAS5502',
           breakfast: 0,
           lunch: 0,
@@ -61,6 +63,7 @@ RSpec.describe 'Shops', type: :request do
       it '条件に一致するお店がない場合' do
         get shops_path, params: {
           pref_code: 'PREF01',
+          category_code: 'RSFST09000',
           areacode_s: 'AREAS5502',
           breakfast: 1,
           lunch: 1,
