@@ -50,12 +50,12 @@ RSpec.describe User, type: :model do
     let(:keep_shop) { create(:keep_shop) }
 
     it 'likeメソッド' do
-      expect { user.like(keep_shop)}.to change(UserKeepShop, :count).by(1)
+      expect { user.like(keep_shop) }.to change(UserKeepShop, :count).by(1)
     end
 
     it 'unlikeメソッド' do
       user.like(keep_shop)
-      expect { user.unlike(keep_shop)}.to change(UserKeepShop, :count).by(-1)
+      expect { user.unlike(keep_shop) }.to change(UserKeepShop, :count).by(-1)
     end
   end
 end
