@@ -1,14 +1,16 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Shops", type: :request do
-  describe "GET /shops" do
-    context "大枠での絞り込み" do
+RSpec.describe 'Shops', type: :request do
+  describe 'GET /shops' do
+    context '大枠での絞り込み' do
       it '県とカテゴリーでの絞り込みができる' do
-        get shops_path, params: { pref_code: "PREF01", category_code: "RSFST09000" }
+        get shops_path, params: { pref_code: 'PREF01', category_code: 'RSFST09000' }
         expect(response.status).to eq 200
 
         # 札幌駅が表示されていることを確認
-        within("#areacode_s") do
+        within('#areacode_s') do
           expect(response.body).to include '札幌駅'
         end
 
@@ -19,17 +21,16 @@ RSpec.describe "Shops", type: :request do
       end
     end
 
-    context "詳細条件での絞り込み" do
+    context '詳細条件での絞り込み' do
       it 'エリアでの絞り込みができる' do
         # 室蘭エリアで絞り込む
         get shops_path, params: {
-          pref_code: "PREF01",
-          areacode_s: "AREAS5909",
+          pref_code: 'PREF01',
+          areacode_s: 'AREAS5909',
           breakfast: 0,
           lunch: 0,
           midnight: 0,
           buffet: 0,
-          bottomless_cup: 0,
           bottomless_cup: 0,
           no_smoking: 0
         }
@@ -41,13 +42,12 @@ RSpec.describe "Shops", type: :request do
 
       it 'ラジオボタンによる絞り込み' do
         get shops_path, params: {
-          pref_code: "PREF01",
-          areacode_s: "AREAS5502",
+          pref_code: 'PREF01',
+          areacode_s: 'AREAS5502',
           breakfast: 0,
           lunch: 0,
           midnight: 0,
           buffet: 0,
-          bottomless_cup: 0,
           bottomless_cup: 0,
           no_smoking: 1
         }
@@ -60,13 +60,12 @@ RSpec.describe "Shops", type: :request do
 
       it '条件に一致するお店がない場合' do
         get shops_path, params: {
-          pref_code: "PREF01",
-          areacode_s: "AREAS5502",
+          pref_code: 'PREF01',
+          areacode_s: 'AREAS5502',
           breakfast: 1,
           lunch: 1,
           midnight: 1,
           buffet: 1,
-          bottomless_cup: 1,
           bottomless_cup: 1,
           no_smoking: 1
         }

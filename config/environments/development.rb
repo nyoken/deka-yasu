@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
@@ -29,8 +31,8 @@ Rails.application.configure do
   end
 
   # 独自ドメインからのアクセスを許可する
-  config.hosts << "www.pay-tsuka.tk"
-  config.hosts << "pay-tsuka-alb-1005445246.us-east-2.elb.amazonaws.com"
+  config.hosts << 'www.pay-tsuka.tk'
+  config.hosts << 'pay-tsuka-alb-1005445246.us-east-2.elb.amazonaws.com'
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
@@ -51,11 +53,11 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     enable_starttls_auto: true,
-    address: "smtp.gmail.com",
+    address: 'smtp.gmail.com',
     port: 587,
     user_name: Rails.application.credentials.mail[:address],
     password: Rails.application.credentials.mail[:password],
-    authentication: "plain"
+    authentication: 'plain'
   }
 
   # letter_opener使うとき用

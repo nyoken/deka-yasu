@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "ResetPassword", type: :system do
+RSpec.describe 'ResetPassword', type: :system do
   after(:all) do
     ActionMailer::Base.deliveries.clear
   end
@@ -11,22 +13,22 @@ RSpec.describe "ResetPassword", type: :system do
   end
 
   let(:user) { create(:user) }
-  it "パスワード再設定ページでパスワードを変更し、変更後のパスワードでログインする" do
+  it 'パスワード再設定ページでパスワードを変更し、変更後のパスワードでログインする' do
     visit new_user_password_path
-    fill_in "メールアドレス", with: user.email
-    expect { click_button "送信" }.to change { ActionMailer::Base.deliveries.size }.by(1)
-    expect(page).to have_content "パスワードの再設定について数分以内にメールでご連絡いたします。"
+    fill_in 'メールアドレス', with: user.email
+    expect { click_button '送信' }.to change { ActionMailer::Base.deliveries.size }.by(1)
+    expect(page).to have_content 'パスワードの再設定について数分以内にメールでご連絡いたします。'
 
     # 送信されたメールのURLを取得してアクセスし、メールアドレスが確認できたことを確認
     mail = ActionMailer::Base.deliveries.last
     url = extract_confirmation_url(mail)
     visit url
 
-    fill_in "新しいパスワード", with: "newtestuser"
-    fill_in "確認のため、再度新しいパスワードを入力してください", with: "newtestuser"
-    click_button "再設定"
-    expect(page).to have_content "パスワードが正しく変更されました。"
+    fill_in '新しいパスワード', with: 'newtestuser'
+    fill_in '確認のため、再度新しいパスワードを入力してください', with: 'newtestuser'
+    click_button '再設定'
+    expect(page).to have_content 'パスワードが正しく変更されました。'
     logout
-    login(user, "newtestuser")
+    login(user, 'newtestuser')
   end
 end

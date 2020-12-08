@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ReviewsController < ApplicationController
   before_action :correct_user, only: :destroy
 
@@ -9,11 +11,12 @@ class ReviewsController < ApplicationController
 
   def destroy
     Review.find(params[:id]).destroy
-    flash[:success] = "口コミを削除しました"
+    flash[:success] = '口コミを削除しました'
     redirect_back(fallback_location: root_path)
   end
 
   private
+
   def review_params
     params.require(:review).permit(:shop_id, :user_id, :body)
   end

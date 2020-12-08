@@ -6,7 +6,7 @@
     <% else %>
       <div class="shops__search-result">
         <h2>お店検索結果一覧</h2>
-        <span><%= @total_hit_count %>件</span>中、<%= @start_count %>-<%= @end_count %>件を表示中
+        <span><%= @total_hit_count %>件</span>中、<%= @now_hit_count %>件を表示中
       </div>
       <%= render 'search-area', pref_code: @pref_code, areas: @areas %>
       <%= render 'shared/rests', rests: @rests %>

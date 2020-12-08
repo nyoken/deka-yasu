@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Home", type: :request do
-  describe "GET /" do
+RSpec.describe 'Home', type: :request do
+  describe 'GET /' do
     it 'ルートページで県情報・カテゴリー情報が取得できている' do
       get root_path
       # PREF01（北海道）, PREF47（沖縄）の値が取得される

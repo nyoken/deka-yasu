@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 class ContactController < ApplicationController
-  before_action :set_contact, only: [:confirm, :create]
+  before_action :set_contact, only: %i[confirm create]
 
   def new
     @contact = Contact.new
   end
 
-  def confirm
-  end
+  def confirm; end
 
   def create
     if @contact.save
@@ -19,10 +20,10 @@ class ContactController < ApplicationController
     end
   end
 
-  def complete
-  end
+  def complete; end
 
   private
+
   def contact_params
     params.require(:contact).permit(:name, :tel, :email, :content)
   end

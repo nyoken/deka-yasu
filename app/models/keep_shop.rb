@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class KeepShop < ApplicationRecord
   KEEP_SHOP_LIMIT = 10
 

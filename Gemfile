@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -27,7 +29,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'kaminari'
 
 # ユーザー認証
-gem "devise"
+gem 'devise'
 
 # deviseの日本語化
 gem 'devise-i18n'
@@ -37,13 +39,15 @@ gem 'devise-i18n-views'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # S3画像アップロード用
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails', '>= 3.7'
-  gem "factory_bot_rails"
+  gem 'factory_bot_rails'
+  gem 'rubocop'
+  gem 'rubocop-rails', require: false
 end
 
 group :development do
@@ -63,4 +67,4 @@ group :test do
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
