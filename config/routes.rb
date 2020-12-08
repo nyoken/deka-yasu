@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post 'contact/complete', to: 'contact#create', as: 'create_contact'
 
   resources :keeplist, only: %i[index create destroy]
-  resources :shops, only: %i[index show]
+  resources :shops, only: %i[index]
   resources :reviews, only: %i[create destroy]
 
   devise_for :users, controllers: {
