@@ -23,6 +23,7 @@ class ShopsController < ApplicationController
 
   def set_search_area
     @pref_code = params[:pref_code]
+    @category_code = params[:category_code]
     get_gurunavi_response('GAreaSmallSearchAPI')
     @areas = @result['garea_small'].select { |garea| garea['pref']['pref_code'] == @pref_code }
   end
@@ -31,7 +32,7 @@ class ShopsController < ApplicationController
     default_query = { "e_money": 1,
                       "hit_per_page": 20,
                       "pref": @pref_code,
-                      "category_l": params[:category_code],
+                      "category_l": @category_code,
                       "offset_page": params[:page] }
     params[:areacode_s] ? default_query.merge(add_query).to_query : default_query.to_query
   end
