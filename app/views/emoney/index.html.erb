@@ -2,5 +2,8 @@
   <div class="emoney__container">
     <h2>電子マネー一覧</h2>
     <%= link_to "電子マネーを追加する", new_emoney_path %>
+    <% @emoneys.each do |emoney| %>
+      <%= emoney.image? ? image_tag(emoney.image_url(:thumb)) : image_tag('noimage.gif') %>
+    <% end %>
   </div>
 </div>

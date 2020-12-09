@@ -18,7 +18,7 @@
         <fieldset>
           <div class="form__item">
             <p><%= f.label :name, '電子マネー名' %></p>
-            <p><%= f.text_field :name, placeholder: '例）PayPay'  %></p>
+            <p><%= f.text_field :name, placeholder: '例）PayPay' %></p>
           </div>
           <div class="form__item">
             <p><%= f.label :category, 'カテゴリー' %></p>
@@ -26,11 +26,11 @@
           </div>
           <div class="form__item">
             <p><%= f.label :image, 'イメージ画像' %></p>
-            <p><%= f.text_field :image %></p>
+            <p><%= f.file_field :image %></p>
           </div>
           <div class="form__item">
             <p><%= f.label :link, '公式リンク' %></p>
-            <p><%= f.text_field :image %></p>
+            <p><%= f.text_field :link %></p>
           </div>
           <div class="form__item">
             <p><%= f.label :description, '概要' %></p>

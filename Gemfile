@@ -38,6 +38,10 @@ gem 'devise-i18n-views'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# 画像アップロードとリサイズ
+gem 'carrierwave'
+gem 'rmagick'
+
 # S3画像アップロード用
 gem 'aws-sdk-s3', require: false
 

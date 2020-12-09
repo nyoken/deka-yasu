@@ -4,4 +4,6 @@ class Emoney < ApplicationRecord
   validates :image, presence: true
   validate :link
   validates :description, presence: true
+
+  mount_uploader :image, ImageUploader
 end

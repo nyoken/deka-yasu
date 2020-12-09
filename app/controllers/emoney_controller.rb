@@ -3,6 +3,7 @@ class EmoneyController < ApplicationController
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
 
   def index
+    @emoneys = Emoney.all
   end
 
   def show
@@ -16,7 +17,7 @@ class EmoneyController < ApplicationController
   end
 
   def create
-    @emoney.save
+    Emoney.create(emoney_params)
     redirect_back(fallback_location: root_path)
   end
 
