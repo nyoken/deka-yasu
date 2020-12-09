@@ -7,6 +7,7 @@ class EmoneyController < ApplicationController
   end
 
   def show
+    @emoney = Emoney.find(params[:id])
   end
 
   def new
@@ -14,17 +15,32 @@ class EmoneyController < ApplicationController
   end
 
   def edit
+    @emoney = Emoney.find(params[:id])
   end
 
   def create
-    Emoney.create(emoney_params)
-    redirect_back(fallback_location: root_path)
+    if Emoney.create(emoney_params)
+      flash[:success] = "電子マネーを追加しました"
+      redirect_to emoney_index_path
+    else
+      render 'new'
+    end
+  end
+
+  def update
+    emoney = Emoney.find(params[:id])
+    if emoney.update_attributes(emoney_params)
+      flash[:success] = "電子マネー情報を更新しました"
+      redirect_to emoney
+    else
+      render 'edit'
+    end
   end
 
   def destroy
     Emoney.find(params[:id]).destroy
     flash[:success] = '電子マネーを削除しました'
-    redirect_back(fallback_location: emoney_index_path)
+    redirect_to emoney_index_url
   end
 
   private

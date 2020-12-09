@@ -3,7 +3,10 @@
     <h2>電子マネー一覧</h2>
     <%= link_to "電子マネーを追加する", new_emoney_path %>
     <% @emoneys.each do |emoney| %>
-      <%= emoney.image? ? image_tag(emoney.image_url(:thumb)) : image_tag('noimage.gif') %>
+      <%= link_to emoney_path(emoney) do %>
+        <%= emoney.name %>
+        <%= desplay_image(emoney) %>
+      <% end %>
     <% end %>
   </div>
 </div>
