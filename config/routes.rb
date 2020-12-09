@@ -12,8 +12,8 @@ Rails.application.routes.draw do
 
   resources :keeplist, only: %i[index create destroy]
   resources :shops, only: %i[index]
-  resources :emoney, only: %i[index show]
   resources :reviews, only: %i[create destroy]
+  resources :emoney
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
