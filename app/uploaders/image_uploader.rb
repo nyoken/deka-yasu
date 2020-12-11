@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class ImageUploader < CarrierWave::Uploader::Base
-  #リサイズと画像形式の変更用
+  # リサイズと画像形式の変更用
   include CarrierWave::RMagick
 
   # Choose what kind of storage to use for this uploader:
@@ -28,16 +30,11 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # 過度な負荷を避けるために上限を設定
-  process :resize_to_limit => [700, 700]
+  process resize_to_limit: [700, 700]
 
   # サムネイル作成
   version :thumb do
     process resize_to_fit: [200, 300]
-  end
-
-  # ファイル名を変更し拡張子をjpgに揃える
-  def filename
-    super.chomp(File.extname(super)) + '.jpg'
   end
 
   # 保存時に日付を付与
@@ -47,5 +44,8 @@ class ImageUploader < CarrierWave::Uploader::Base
       name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
       name.downcase
     end
+
+    # ファイル名を変更し拡張子をjpgに揃える
+    super.chomp(File.extname(super)) + '.jpg'
   end
 end

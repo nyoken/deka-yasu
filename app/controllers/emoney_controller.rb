@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class EmoneyController < ApplicationController
   # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
@@ -20,7 +22,7 @@ class EmoneyController < ApplicationController
 
   def create
     if Emoney.create(emoney_params)
-      flash[:success] = "電子マネーを追加しました"
+      flash[:success] = '電子マネーを追加しました'
       redirect_to emoney_index_path
     else
       render 'new'
@@ -30,7 +32,7 @@ class EmoneyController < ApplicationController
   def update
     emoney = Emoney.find(params[:id])
     if emoney.update_attributes(emoney_params)
-      flash[:success] = "電子マネー情報を更新しました"
+      flash[:success] = '電子マネー情報を更新しました'
       redirect_to emoney
     else
       render 'edit'

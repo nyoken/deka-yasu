@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Emoney < ApplicationRecord
   validates :name, presence: true
   validates :category, presence: true
