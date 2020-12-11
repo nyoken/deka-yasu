@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:name) { |n| "emoney#{n}" }
     category { 'category' }
     image { 'image' }
-    link { 'link' } # null許可
+    link { 'link' }
     description { 'description' }
   end
 end

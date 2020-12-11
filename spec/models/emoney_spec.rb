@@ -31,7 +31,7 @@ RSpec.describe Emoney, type: :model do
     end
 
     it 'リンクが空でもOK' do
-      emoney.link = nil
+      emoney.link = ''
       expect(emoney.valid?).to eq(true)
     end
   end
