@@ -1,0 +1,21 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        emoney:
+          attributes:
+            name:
+              blank: "が入力されていません。"
+            category:
+              blank: "が入力されていません。"
+            image:
+              blank: "が設定されていません。"
+            description:
+              blank: "が入力されていません。"
+    attributes:
+      emoney:
+        name: "電子マネー名"
+        category: "カテゴリー"
+        image: "イメージ画像"
+        link: "公式リンク"
+        description: "概要"
