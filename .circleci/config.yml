@@ -11,7 +11,7 @@ jobs:
     - image: circleci/postgres:13.1
       environment:
         POSTGRES_USER: root
-        POSTGRES_DB: app_test
+        POSTGRES_DB: ci_test
         POSTGRES_PASSWORD: password
     working_directory: ~/pay-tsuka
     steps:
@@ -32,6 +32,8 @@ jobs:
     # Webpacker用にyarnをinstall
         name: Yarn Install
         command: yarn install --cache-folder ~/.cache/yarn
+    # apply DB for CircleCI
+    - run: mv config/database.yml.ci config/database.yml
     # Database setup
     - run:
         name: Prepare db
