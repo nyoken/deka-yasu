@@ -21,20 +21,23 @@ class EmoneyController < ApplicationController
   end
 
   def create
-    if Emoney.create(emoney_params)
+    @emoney = Emoney.new(emoney_params)
+    if @emoney.save
       flash[:success] = '電子マネーを追加しました'
       redirect_to emoney_index_path
     else
+      flash[:error] = '電子マネーの登録に失敗しました'
       render 'new'
     end
   end
 
   def update
-    emoney = Emoney.find(params[:id])
-    if emoney.update_attributes(emoney_params)
+    @emoney = Emoney.find(params[:id])
+    if @emoney.update_attributes(emoney_params)
       flash[:success] = '電子マネー情報を更新しました'
-      redirect_to emoney
+      redirect_to @emoney
     else
+      flash[:error] = '電子マネーの更新に失敗しました'
       render 'edit'
     end
   end
