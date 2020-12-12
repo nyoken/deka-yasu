@@ -19,6 +19,41 @@
     }
   }
 
+  &__items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item {
+    margin: 10px;
+
+    a {
+      color: $black;
+      display: flex;
+      flex-direction: column;
+
+      span {
+        width: 180px;
+        height: 140px;
+        background: #F5F5F5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+          width: 100px;
+          height: 80px;
+        }
+      }
+    }
+  }
+
   &__submit-btn {
     @include submit-btn;
   }

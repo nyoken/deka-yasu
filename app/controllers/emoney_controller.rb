@@ -5,7 +5,8 @@ class EmoneyController < ApplicationController
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
 
   def index
-    @emoneys = Emoney.all
+    @emoneys = Emoney.all.order(:category)
+    @categories = Emoney.select(:category).distinct
   end
 
   def show
