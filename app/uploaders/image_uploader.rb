@@ -10,11 +10,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # developmentとtestで画像保存ディレクトリを分ける
   def store_dir
-    if Rails.env.test?
-      "uploads_#{Rails.env}/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    else
-      "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
-    end
+    dir = "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
+    Rails.env.test? ? "uploads_#{Rails.env}/#{dir}" : "uploads/#{dir}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:

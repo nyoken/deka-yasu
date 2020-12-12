@@ -41,9 +41,7 @@ RSpec.configure do |config|
 
   # テスト後に画像ファイルを削除
   config.after(:all) do
-    if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"])
-    end
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"]) if Rails.env.test?
   end
 
   # sign_inヘルパーをinclude
