@@ -3,10 +3,9 @@
     <h2>電子マネー詳細</h2>
     <%= desplay_image(@emoney) %>
     <%= @emoney.name %>
-    <%= @emoney.category %>
     <%= @emoney.link if @emoney.link %>
     <%= @emoney.description %>
     <%= link_to '編集する', edit_emoney_path(@emoney) %>
-    <%= link_to '削除する', @emoney, method: :delete, data: { confirm: '本当に削除しますか？' } %>    
+    <%= link_to '削除する', @emoney, method: :delete, data: { confirm: '本当に削除しますか？' } %>
   </div>
 </div>

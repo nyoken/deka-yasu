@@ -31,7 +31,6 @@ RSpec.describe 'Emoneys', type: :system do
       expect(page).to have_content('電子マネー詳細')
       expect(page).to have_content(emoney.name)
       expect(page).to have_selector("img[src$='image.jpg']")
-      expect(page).to have_content(emoney.category)
       expect(page).to have_content(emoney.link)
       expect(page).to have_content(emoney.description)
       expect(page).to have_link('編集する')
@@ -53,7 +52,6 @@ RSpec.describe 'Emoneys', type: :system do
       it 'emoneyを作成し、一覧ページに遷移する' do
         # フォームを記入して、送信ボタンをクリック
         fill_in('emoney[name]', with: 'test_emoney')
-        fill_in('emoney[category]', with: 'test_category')
         attach_file('emoney[image]', 'spec/fixtures/image.png')
         fill_in('emoney[link]', with: 'test_link')
         fill_in('emoney[description]', with: 'test_description')
@@ -71,7 +69,6 @@ RSpec.describe 'Emoneys', type: :system do
 
         expect(page).to have_content('電子マネーの登録に失敗しました')
         expect(page).to have_content('電子マネー名 が入力されていません。')
-        expect(page).to have_content('カテゴリー が入力されていません。')
         expect(page).to have_content('イメージ画像 が設定されていません。')
         expect(page).to have_content('概要 が入力されていません。')
         expect(page).not_to have_link('test_emoney')
@@ -92,7 +89,6 @@ RSpec.describe 'Emoneys', type: :system do
       it 'emoneyを更新して、emoney詳細ページに遷移する' do
         # 値を変更して、更新ボタンをクリック
         fill_in('emoney[name]', with: 'updated_emoney')
-        fill_in('emoney[category]', with: 'updated_category')
         attach_file('emoney[image]', 'spec/fixtures/image2.png')
         fill_in('emoney[link]', with: 'updated_link')
         fill_in('emoney[description]', with: 'updated_description')
@@ -102,7 +98,6 @@ RSpec.describe 'Emoneys', type: :system do
         expect(current_path).to eq emoney_path(emoney)
         expect(page).to have_content('電子マネー情報を更新しました')
         expect(page).to have_content('updated_emoney')
-        expect(page).to have_content('updated_category')
         expect(page).to have_selector("img[src$='image2.jpg']")
         expect(page).to have_content('updated_link')
         expect(page).to have_content('updated_description')

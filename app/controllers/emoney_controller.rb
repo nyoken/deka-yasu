@@ -5,8 +5,7 @@ class EmoneyController < ApplicationController
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
 
   def index
-    @emoneys = Emoney.all.order(:category)
-    @categories = Emoney.select(:category).distinct
+    @emoneys = Emoney.all
   end
 
   def show
@@ -52,7 +51,7 @@ class EmoneyController < ApplicationController
   private
 
   def emoney_params
-    params.require(:emoney).permit(:name, :category, :image, :link, :description)
+    params.require(:emoney).permit(:name, :image, :link, :description)
   end
 
   # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト

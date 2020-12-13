@@ -15,11 +15,6 @@ RSpec.describe Emoney, type: :model do
       expect(emoney.valid?).to eq(false)
     end
 
-    it 'カテゴリーが空だとNG' do
-      emoney.category = nil
-      expect(emoney.valid?).to eq(false)
-    end
-
     it 'イメージが空だとNG' do
       emoney.image = nil
       expect(emoney.valid?).to eq(false)
