@@ -6,5 +6,7 @@ class Emoney < ApplicationRecord
   validate :link
   validates :description, presence: true
 
+  belongs_to :category
+
   mount_uploader :image, ImageUploader
 end

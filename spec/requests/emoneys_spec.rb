@@ -5,9 +5,10 @@ require 'rails_helper'
 RSpec.describe 'Emoneys', type: :request do
   let(:emoney1) { create(:emoney) }
   let(:emoney2) { create(:emoney) }
-  let(:emoney_create_params) { attributes_for(:emoney) }
+  let(:category1) { create(:category) }
+  let(:emoney_create_params) { attributes_for(:emoney, category_id: category1.id) }
   let(:emoney_update_params) { attributes_for(:emoney, name: 'updated_emoney') }
-  let(:invalid_emoney_params) { attributes_for(:emoney, name: '') }
+  let(:invalid_emoney_params) { attributes_for(:emoney, name: '', category_id: category1.id) }
 
   describe 'GET #index' do
     before do
@@ -81,10 +82,6 @@ RSpec.describe 'Emoneys', type: :request do
   end
 
   describe 'POST #create' do
-    before do
-      emoney1
-    end
-
     context 'パラメータが妥当な場合' do
       it 'リクエストが成功する' do
         post emoney_index_path, params: { emoney: emoney_create_params }

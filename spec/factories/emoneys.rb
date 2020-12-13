@@ -6,5 +6,6 @@ FactoryBot.define do
     image {  Rack::Test::UploadedFile.new(File.join(Rails.root, 'spec/fixtures/image.png'), 'image/png') }
     link { 'link' }
     description { 'description' }
+    association :category
   end
 end

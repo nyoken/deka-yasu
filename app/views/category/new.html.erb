@@ -1,0 +1,18 @@
+<div class="category__wrapper">
+  <div class="category__container">
+    <h2>カテゴリー追加</h2>
+    <p>追加したいカテゴリーを入力し、追加ボタンを押してください。</p>
+    <section class="form">
+      <%= form_for @category, url: category_index_path do |f| %>
+      <%= render "shared/error_messages", resource: @category %>
+        <fieldset>
+          <div class="form__item">
+            <p><%= f.label :name, 'カテゴリー名' %></p>
+            <p><%= f.text_field :name %></p>
+          </div>
+          <%= f.submit '追加' %>
+        </fieldset>
+      <% end %>
+    </section>
+  </div>
+</div>

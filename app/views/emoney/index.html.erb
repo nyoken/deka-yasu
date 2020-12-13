@@ -3,13 +3,17 @@
     <h2>電子マネー一覧</h2>
     <%= link_to "電子マネーを追加する", new_emoney_path %>
     <div class="emoney__items">
-      <% @emoneys.each do |emoney| %>
-        <section class="emoney__item">
-          <%= link_to emoney_path(emoney) do %>
-            <%= emoney.name %>
-            <span><%= desplay_image(emoney) %></span>
+      <% @categories.each do |category| %>
+        <div class="emoney__category">
+          <% category.emoneys.each do |emoney| %>
+            <section class="emoney__item">
+              <%= link_to emoney_path(emoney) do %>
+                <%= emoney.name %>
+                <span><%= desplay_image(emoney) %></span>
+              <% end %>
+            </section>
           <% end %>
-        </section>
+        </div>
       <% end %>
     </div>
   </div>

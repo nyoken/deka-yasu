@@ -39,8 +39,13 @@ RSpec.describe 'Emoneys', type: :system do
   end
 
   describe 'new/create' do
+    let(:category) { create(:category) }
+    let(:category2) { create(:category2) }
+
     # トップページ→一覧ページ→emoney作成ページに遷移する
     before do
+      category
+      category2
       visit root_path
       click_link '電子マネー'
       click_link '電子マネーを追加する'
@@ -52,10 +57,11 @@ RSpec.describe 'Emoneys', type: :system do
       it 'emoneyを作成し、一覧ページに遷移する' do
         # フォームを記入して、送信ボタンをクリック
         fill_in('emoney[name]', with: 'test_emoney')
+        find("#emoney_category_id").find("option[value='#{category.id}']").select_option
         attach_file('emoney[image]', 'spec/fixtures/image.png')
         fill_in('emoney[link]', with: 'test_link')
         fill_in('emoney[description]', with: 'test_description')
-        click_button '送信'
+        click_button '追加'
 
         expect(current_path).to eq emoney_index_path
         expect(page).to have_content('電子マネーを追加しました')
@@ -65,7 +71,7 @@ RSpec.describe 'Emoneys', type: :system do
 
     context 'emoneyの作成が失敗した場合' do
       it 'エラーメッセージを表示する' do
-        click_button '送信'
+        click_button '追加'
 
         expect(page).to have_content('電子マネーの登録に失敗しました')
         expect(page).to have_content('電子マネー名 が入力されていません。')

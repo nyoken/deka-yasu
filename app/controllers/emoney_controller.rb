@@ -3,9 +3,9 @@
 class EmoneyController < ApplicationController
   # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
+  before_action :set_categories, only: [:index, :new, :create]
 
   def index
-    @emoneys = Emoney.all
   end
 
   def show
@@ -51,7 +51,11 @@ class EmoneyController < ApplicationController
   private
 
   def emoney_params
-    params.require(:emoney).permit(:name, :image, :link, :description)
+    params.require(:emoney).permit(:name, :category_id, :image, :link, :description)
+  end
+
+  def set_categories
+    @categories = Category.all
   end
 
   # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト

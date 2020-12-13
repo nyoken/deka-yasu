@@ -10,10 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_13_060013) do
+ActiveRecord::Schema.define(version: 2020_12_13_114518) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "contacts", force: :cascade do |t|
     t.string "name", null: false
@@ -31,6 +37,8 @@ ActiveRecord::Schema.define(version: 2020_12_13_060013) do
     t.text "description", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_emoneys_on_category_id"
   end
 
   create_table "keep_shops", force: :cascade do |t|
@@ -86,6 +94,7 @@ ActiveRecord::Schema.define(version: 2020_12_13_060013) do
     t.index ["unlock_token"], name: "index_users_on_unlock_token", unique: true
   end
 
+  add_foreign_key "emoneys", "categories"
   add_foreign_key "reviews", "users"
   add_foreign_key "user_keep_shops", "keep_shops"
   add_foreign_key "user_keep_shops", "users"
