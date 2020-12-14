@@ -11,15 +11,32 @@
     p {
       margin-top: 20px;
     }
-
-    a {
-      display: block;
-      text-align: center;
-      margin-top: 50px;
-    }
   }
 
-  &__submit-btn {
-    @include submit-btn;
+  // show
+  &__others {
+    margin-top: 80px;
+
+    a {
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.8rem 2rem;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border-radius: 0.5rem;
+      color: #fff;
+      background-color: #FFA500;
+
+      &:hover {
+        color: #fff;
+        background: #f56500;
+      }
+    }
   }
 }

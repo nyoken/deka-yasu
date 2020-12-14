@@ -6,16 +6,7 @@
       <% @categories.each do |category| %>
         <section class="emoney__category">
           <h4><%= link_to(category.name, category_path(category.id)) %></h4>
-          <div class="emoney__items">
-            <% category.emoneys.each do |emoney| %>
-              <div class="emoney__item">
-                <%= link_to emoney_path(emoney) do %>
-                  <%= emoney.name %>
-                  <span><%= desplay_image(emoney) %></span>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+          <%= render 'shared/emoneys', emoneys: category.emoneys %>
         </section>
       <% end %>
     </div>

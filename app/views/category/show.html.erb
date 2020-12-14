@@ -1,13 +1,12 @@
 <div class="category__wrapper">
   <div class="category__container">
     <h2><%= @category.name %>の電子マネー</h2>
-    <% @category.emoneys.each do |emoney| %>
-      <section class="emoney__item">
-        <%= link_to emoney_path(emoney) do %>
-          <%= emoney.name %>
-          <span><%= desplay_image(emoney) %></span>
-        <% end %>
-      </section>
-    <% end %>
+    <%= render 'shared/emoneys', emoneys: @category.emoneys %>
+    <div class="category__others">
+      <h4>他のカテゴリー</h4>
+      <% @other_categories.each do |category| %>
+        <%= link_to category.name, category_path(category), class: "btn" %>
+      <% end %>
+    </div>
   </div>
 </div>
