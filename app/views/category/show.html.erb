@@ -1,2 +1,13 @@
-<h1>Category#show</h1>
-<p>Find me in app/views/category/show.html.erb</p>
+<div class="category__wrapper">
+  <div class="category__container">
+    <h2><%= @category.name %>の電子マネー</h2>
+    <% @category.emoneys.each do |emoney| %>
+      <section class="emoney__item">
+        <%= link_to emoney_path(emoney) do %>
+          <%= emoney.name %>
+          <span><%= desplay_image(emoney) %></span>
+        <% end %>
+      </section>
+    <% end %>
+  </div>
+</div>

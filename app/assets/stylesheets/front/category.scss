@@ -1,0 +1,25 @@
+@import "/mixins/common-mixins";
+
+.category {
+  &__wrapper {
+    @include static-wrapper;
+  }
+
+  &__container {
+    @include static-container;
+
+    p {
+      margin-top: 20px;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 50px;
+    }
+  }
+
+  &__submit-btn {
+    @include submit-btn;
+  }
+}
