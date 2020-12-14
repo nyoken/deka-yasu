@@ -13,6 +13,7 @@
     }
   }
 
+  // index
   &__new-link {
     a {
       display: block;
@@ -58,6 +59,25 @@
         img {
           width: 100px;
           height: 80px;
+        }
+      }
+    }
+  }
+
+  // show
+  &__image {
+    img {
+      margin-top: 25px;
+    }
+  }
+
+  &__information {
+    margin-top: 45px;
+    dl {
+      margin-top: 30px;
+      dt {
+        dd {
+
         }
       }
     }
