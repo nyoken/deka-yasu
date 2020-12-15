@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 RSpec.describe 'Emoneys', type: :request do
-  let(:emoney1) { create(:emoney) }
+  let(:emoney1) { create(:emoney, category: category1) }
   let(:emoney2) { create(:emoney) }
   let(:category1) { create(:category) }
   let(:emoney_create_params) { attributes_for(:emoney, category_id: category1.id) }
@@ -14,11 +14,17 @@ RSpec.describe 'Emoneys', type: :request do
     before do
       emoney1
       emoney2
+      category1
     end
 
     it 'リクエストが成功する' do
       get emoney_index_path
       expect(response.status).to eq 200
+    end
+
+    it 'カテゴリーが取得できている' do
+      get emoney_index_path
+      expect(response.body).to include category1.name
     end
 
     it 'emoney1/emoney2の2つが表示されている' do
@@ -33,6 +39,11 @@ RSpec.describe 'Emoneys', type: :request do
       it 'リクエストが成功する' do
         get emoney_path(emoney1)
         expect(response.status).to eq 200
+      end
+
+      it '電子マネーの属するカテゴリーが取得できている' do
+        get emoney_path(emoney1)
+        expect(response.body).to include emoney1.category.name
       end
 
       it 'emoney1の電子マネー名が表示されている' do
@@ -54,9 +65,18 @@ RSpec.describe 'Emoneys', type: :request do
   end
 
   describe 'GET #new' do
+    before do
+      category1
+    end
+
     it 'リクエストが成功する' do
       get new_emoney_path
       expect(response.status).to eq 200
+    end
+
+    it 'カテゴリーが取得できている' do
+      get new_emoney_path
+      expect(response.body).to include category1.name
     end
   end
 
@@ -68,6 +88,11 @@ RSpec.describe 'Emoneys', type: :request do
     it 'リクエストが成功する' do
       get edit_emoney_path(emoney1)
       expect(response.status).to eq 200
+    end
+
+    it 'カテゴリーが取得できている' do
+      get edit_emoney_path(emoney1)
+      expect(response.body).to include category1.name
     end
 
     it '電子マネー名が表示されている' do

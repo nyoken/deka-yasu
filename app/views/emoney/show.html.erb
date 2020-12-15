@@ -4,6 +4,12 @@
     <span class="emoney__image"><%= desplay_image(@emoney) %></span>
     <section class="emoney__information">
       <dl>
+        <dt>カテゴリー</dt>
+        <dd>
+          <%= @emoney.category.name %>
+        </dd>
+      </dl>
+      <dl>
         <dt>概要</dt>
         <dd>
           <%= @emoney.description %>

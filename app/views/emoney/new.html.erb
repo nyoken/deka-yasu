@@ -2,33 +2,6 @@
   <div class="emoney__container">
     <h2>電子マネー追加</h2>
     <p>追加したい電子マネー情報を入力し、追加ボタンを押してください。</p>
-    <section class="form">
-      <%= form_for @emoney, url: emoney_index_path do |f| %>
-      <%= render "shared/error_messages", resource: @emoney %>
-        <fieldset>
-          <div class="form__item">
-            <p><%= f.label :name, '電子マネー名' %></p>
-            <p><%= f.text_field :name, placeholder: '例）PayPay' %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :category_id, 'カテゴリー' %></p>
-            <p><%= f.collection_select(:category_id, @categories, :id, :name) %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :image, 'イメージ画像' %></p>
-            <p><%= f.file_field :image %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :link, '公式リンク' %></p>
-            <p><%= f.text_field :link %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :description, '概要' %></p>
-            <%= f.text_area :description, placeholder: '電子マネーの概要をご記入ください' %>
-          </div>
-          <%= f.submit '追加' %>
-        </fieldset>
-      <% end %>
-    </section>
+    <%= render "form", emoney: @emoney, url: emoney_index_path, categories: @categories %>
   </div>
 </div>

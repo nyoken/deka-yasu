@@ -2,29 +2,6 @@
   <div class="emoney__container">
     <h2>電子マネー編集</h2>
     <p>電子マネー情報を変更し、更新ボタンを押してください。</p>
-    <section class="form">
-      <%= form_for(@emoney, url: emoney_path(@emoney)) do |f| %>
-      <%= render "shared/error_messages", resource: @emoney %>
-        <fieldset>
-          <div class="form__item">
-            <p><%= f.label :name, '電子マネー名' %></p>
-            <p><%= f.text_field :name, placeholder: '例）PayPay' %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :image, 'イメージ画像' %></p>
-            <p><%= f.file_field :image %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :link, '公式リンク' %></p>
-            <p><%= f.text_field :link %></p>
-          </div>
-          <div class="form__item">
-            <p><%= f.label :description, '概要' %></p>
-            <%= f.text_area :description, placeholder: '電子マネーの概要をご記入ください' %>
-          </div>
-          <%= f.submit '更新' %>
-        </fieldset>
-      <% end %>
-    </section>
+    <%= render "form", emoney: @emoney, url: emoney_path(@emoney), categories: @categories %>
   </div>
 </div>
