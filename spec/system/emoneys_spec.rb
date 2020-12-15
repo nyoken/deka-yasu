@@ -28,13 +28,13 @@ RSpec.describe 'Emoneys', type: :system do
       click_link '電子マネー'
       click_link emoney.name
       expect(current_path).to eq emoney_path(emoney)
-      expect(page).to have_content('電子マネー詳細')
-      expect(page).to have_content(emoney.name)
+      find('h2') do
+        expect(page).to have_content(emoney.name)
+      end
       expect(page).to have_selector("img[src$='image.jpg']")
       expect(page).to have_content(emoney.link)
       expect(page).to have_content(emoney.description)
       expect(page).to have_link('編集する')
-      expect(page).to have_link('削除する')
     end
   end
 
@@ -130,7 +130,9 @@ RSpec.describe 'Emoneys', type: :system do
       emoney
       visit emoney_path(emoney)
       expect(current_path).to eq emoney_path(emoney)
-      expect(page).to have_content('電子マネー詳細')
+      find('h2') do
+        expect(page).to have_content(emoney.name)
+      end
     end
 
     context 'emoneyの削除が成功した場合' do
