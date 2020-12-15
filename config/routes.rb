@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'category/show'
   mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 
   root 'home#index'
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   resources :keeplist, only: %i[index create destroy]
   resources :shops, only: %i[index]
   resources :reviews, only: %i[create destroy]
-  resources :category, only: %i[show new create destroy]
+  resources :category, only: %i[show new edit create update destroy]
   resources :emoney
 
   devise_for :users, controllers: {

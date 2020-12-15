@@ -53,13 +53,4 @@ class EmoneyController < ApplicationController
   def emoney_params
     params.require(:emoney).permit(:name, :category_id, :image, :link, :description)
   end
-
-  def set_categories
-    @categories = Category.all
-  end
-
-  # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト
-  # def check_admin_user
-  #   redirect_to(root_path) unless user_signed_in? && current_user.admin?
-  # end
 end

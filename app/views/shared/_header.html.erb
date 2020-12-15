@@ -17,6 +17,7 @@
         <%= link_to "サービス紹介", service_path, class: "nav-item nav-link" %>
         <%= link_to "電子マネー", emoney_index_path, class: "nav-item nav-link" %>
         <%= link_to "お問い合わせ", contact_path, class: "nav-item nav-link" %>
+        <%= link_to "カテゴリー追加", new_category_path, class: "nav-item nav-link" if user_signed_in? && current_user.admin? %>
 
         <!-- SP時のみ表示 -->
         <div class="d-block d-lg-none">

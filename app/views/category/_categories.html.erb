@@ -1,0 +1,10 @@
+<section class="category__<%= class_name %>">
+  <h4><%= heading %></h4>
+  <% categories.each do |category| %>
+    <% if controller.action_name == "show" %>
+      <%= link_to category.name, category_path(category) %>
+    <% else %>
+      <%= link_to category.name, edit_category_path(category) %>
+    <% end %>
+  <% end %>
+</section>
