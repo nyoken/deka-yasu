@@ -3,16 +3,23 @@
 require 'rails_helper'
 
 RSpec.describe 'Emoneys', type: :system do
-  let(:emoney) { create(:emoney) }
+  let(:category1) { create(:category) }
+  let(:category2) { create(:category, name: "category2") }
+  let(:emoney1) { create(:emoney, category: category1) }
+  let(:emoney2) { create(:emoney, category: category2) }
 
   describe 'index' do
-    it 'emoneyの名前が表示されていて、emoney2の名前が表示されていない' do
-      emoney
+    it 'emoney1、emoney2の名前とカテゴリー名が表示されている' do
+      emoney1
+      emoney2
       visit root_path
       click_link '電子マネー'
       expect(current_path).to eq emoney_index_path
       expect(page).to have_content('電子マネー一覧')
-      expect(page).to have_content(emoney.name)
+      expect(page).to have_content(emoney1.name)
+      expect(page).to have_content(emoney2.name)
+      expect(page).to have_content(emoney1.category.name)
+      expect(page).to have_content(emoney2.category.name)
       # 画像（emoney.image）が表示されていることを確認
       expect(page).to have_selector("img[src$='image.jpg']")
     end
@@ -20,31 +27,30 @@ RSpec.describe 'Emoneys', type: :system do
 
   describe 'show' do
     before do
-      emoney
+      emoney1
     end
 
     it '一覧ページからemoneyの詳細ページに遷移し、詳細情報が表示されている' do
       visit root_path
       click_link '電子マネー'
-      click_link emoney.name
-      expect(current_path).to eq emoney_path(emoney)
+      click_link emoney1.name
+      expect(current_path).to eq emoney_path(emoney1)
       find('h2') do
-        expect(page).to have_content(emoney.name)
+        expect(page).to have_content(emoney1.name)
       end
+      expect(page).to have_content(emoney1.category.name)
       expect(page).to have_selector("img[src$='image.jpg']")
-      expect(page).to have_content(emoney.link)
-      expect(page).to have_content(emoney.description)
+      expect(page).to have_content(emoney1.link)
+      expect(page).to have_content(emoney1.description)
       expect(page).to have_link('編集する')
+      expect(page).to have_link('削除する')
     end
   end
 
   describe 'new/create' do
-    let(:category) { create(:category) }
-    let(:category2) { create(:category2) }
-
     # トップページ→一覧ページ→emoney作成ページに遷移する
     before do
-      category
+      category1
       category2
       visit root_path
       click_link '電子マネー'
@@ -57,7 +63,7 @@ RSpec.describe 'Emoneys', type: :system do
       it 'emoneyを作成し、一覧ページに遷移する' do
         # フォームを記入して、送信ボタンをクリック
         fill_in('emoney[name]', with: 'test_emoney')
-        find("#emoney_category_id").find("option[value='#{category.id}']").select_option
+        find("#emoney_category_id").find("option[value='#{category1.id}']").select_option
         attach_file('emoney[image]', 'spec/fixtures/image.png')
         fill_in('emoney[link]', with: 'test_link')
         fill_in('emoney[description]', with: 'test_description')
@@ -82,12 +88,12 @@ RSpec.describe 'Emoneys', type: :system do
     end
   end
 
-  describe 'update' do
+  describe 'edit/update' do
     # emoney更新ページに遷移する
     before do
-      emoney
-      visit edit_emoney_path(emoney)
-      expect(current_path).to eq edit_emoney_path(emoney)
+      emoney1
+      visit edit_emoney_path(emoney1)
+      expect(current_path).to eq edit_emoney_path(emoney1)
       expect(page).to have_content('電子マネー編集')
     end
 
@@ -101,7 +107,7 @@ RSpec.describe 'Emoneys', type: :system do
         click_button '更新'
 
         # 更新後の値が表示され、更新前の値が表示されていない
-        expect(current_path).to eq emoney_path(emoney)
+        expect(current_path).to eq emoney_path(emoney1)
         expect(page).to have_content('電子マネー情報を更新しました')
         expect(page).to have_content('updated_emoney')
         expect(page).to have_selector("img[src$='image2.jpg']")
@@ -117,7 +123,7 @@ RSpec.describe 'Emoneys', type: :system do
         click_button '更新'
 
         # 更新前の値が表示される
-        expect(current_path).to eq emoney_path(emoney)
+        expect(current_path).to eq emoney_path(emoney1)
         expect(page).to have_content('電子マネーの更新に失敗しました')
         expect(page).to have_content('電子マネー名 が入力されていません')
       end
@@ -127,11 +133,11 @@ RSpec.describe 'Emoneys', type: :system do
   describe 'delete' do
     # emoney詳細ページに遷移する
     before do
-      emoney
-      visit emoney_path(emoney)
-      expect(current_path).to eq emoney_path(emoney)
+      emoney1
+      visit emoney_path(emoney1)
+      expect(current_path).to eq emoney_path(emoney1)
       find('h2') do
-        expect(page).to have_content(emoney.name)
+        expect(page).to have_content(emoney1.name)
       end
     end
 
@@ -142,7 +148,7 @@ RSpec.describe 'Emoneys', type: :system do
         # 一覧ページに遷移し、emoneyの名前が表示されていない
         expect(current_path).to eq emoney_index_path
         expect(page).to have_content('電子マネーを削除しました')
-        expect(page).not_to have_content(emoney.name)
+        expect(page).not_to have_content(emoney1.name)
       end
     end
   end

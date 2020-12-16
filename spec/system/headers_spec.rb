@@ -3,6 +3,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Headers', type: :system do
+  let(:admin_user) { create(:user, admin: true) }
+
   before do
     visit root_path
   end
@@ -22,6 +24,11 @@ RSpec.describe 'Headers', type: :system do
     expect(page).to have_css('.service__wrapper')
   end
 
+  it '「電子マネー紹介」から電子マネー一覧ページにアクセスできる' do
+    click_link '電子マネー紹介'
+    expect(page).to have_css('.emoney__wrapper')
+  end
+
   it '「お問い合わせ」からお問い合わせページにアクセスできる' do
     click_link 'お問い合わせ'
     expect(page).to have_css('.contact__wrapper')
@@ -35,5 +42,11 @@ RSpec.describe 'Headers', type: :system do
   it '「ログイン」からログインページにアクセスできる' do
     click_link 'ログイン', match: :first
     expect(page).to have_css('.login__wrapper')
+  end
+
+  it '管理者ユーザーでログイン時、「カテゴリー追加」からカテゴリー追加ページにアクセスできる' do
+    login(admin_user, 'testuser')
+    click_link 'カテゴリー追加'
+    expect(page).to have_css('.category__wrapper')
   end
 end
