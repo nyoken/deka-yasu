@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Categories', type: :system do
   let(:admin_user) { create(:user, admin: true) }
   let(:category1) { create(:category) }
-  let(:category2) { create(:category, name: "category2") }
+  let(:category2) { create(:category, name: 'category2') }
   let(:emoney1) { create(:emoney, category: category1) }
   let(:emoney2) { create(:emoney, category: category2) }
 

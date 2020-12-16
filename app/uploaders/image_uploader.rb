@@ -8,7 +8,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   storage :file
   # storage :fog
 
-
   # developmentとtestで画像保存ディレクトリを分ける
   def store_dir
     dir = "#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"

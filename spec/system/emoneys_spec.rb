@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe 'Emoneys', type: :system do
   let(:category1) { create(:category) }
-  let(:category2) { create(:category, name: "category2") }
+  let(:category2) { create(:category, name: 'category2') }
   let(:emoney1) { create(:emoney, category: category1) }
   let(:emoney2) { create(:emoney, category: category2) }
 
@@ -63,7 +63,7 @@ RSpec.describe 'Emoneys', type: :system do
       it 'emoneyを作成し、一覧ページに遷移する' do
         # フォームを記入して、送信ボタンをクリック
         fill_in('emoney[name]', with: 'test_emoney')
-        find("#emoney_category_id").find("option[value='#{category1.id}']").select_option
+        find('#emoney_category_id').find("option[value='#{category1.id}']").select_option
         attach_file('emoney[image]', 'spec/fixtures/image.png')
         fill_in('emoney[link]', with: 'test_link')
         fill_in('emoney[description]', with: 'test_description')

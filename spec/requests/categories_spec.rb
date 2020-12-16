@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
-RSpec.describe "Categories", type: :request do
+RSpec.describe 'Categories', type: :request do
   let(:user) { create(:user) }
   let(:admin_user) { create(:user, admin: true) }
   let(:category1) { create(:category) }
@@ -243,7 +245,7 @@ RSpec.describe "Categories", type: :request do
       before do
         sign_in admin_user
       end
-            
+
       it 'リクエストが成功する' do
         delete category_path(category1)
         expect(response.status).to eq 302

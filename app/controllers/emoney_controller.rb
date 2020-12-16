@@ -3,10 +3,9 @@
 class EmoneyController < ApplicationController
   # 電子マネー追加・編集・削除に管理ユーザーログインを要する場合はコメントアウト
   # before_action :check_admin_user, only: [:new, :edit, :create, :destroy]
-  before_action :set_categories, only: [:index, :new, :edit, :create, :update]
+  before_action :set_categories, only: %i[index new edit create update]
 
-  def index
-  end
+  def index; end
 
   def show
     @emoney = Emoney.find(params[:id])
