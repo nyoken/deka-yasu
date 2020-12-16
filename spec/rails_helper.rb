@@ -45,7 +45,7 @@ RSpec.configure do |config|
   end
 
   # sign_inヘルパーをinclude
-  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # Factory_botのメソッドを使用する際に、クラス名の指定を省略できるようにする
   config.include FactoryBot::Syntax::Methods
 

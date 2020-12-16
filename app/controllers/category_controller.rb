@@ -1,7 +1,7 @@
 class CategoryController < ApplicationController
   # カテゴリーの作成は管理者ユーザーのみに許可
   before_action :check_admin_user, only: [:new, :edit, :create, :update, :destroy]
-  before_action :set_categories, only: [:new, :edit]
+  before_action :set_categories, only: [:new, :edit, :create, :update]
 
   def show
     @category = Category.find(params[:id])
