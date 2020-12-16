@@ -1,0 +1,7 @@
+<div class="category__wrapper">
+  <div class="category__container">
+    <h2><%= @category.name %>の電子マネー</h2>
+    <%= render 'shared/emoneys', emoneys: @category.emoneys %>
+    <%= render "categories", categories: @other_categories, class_name: "others", heading: "他のカテゴリー" %>
+  </div>
+</div>

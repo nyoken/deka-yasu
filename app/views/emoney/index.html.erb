@@ -1,0 +1,14 @@
+<div class="emoney__wrapper">
+  <div class="emoney__container">
+    <h2>電子マネー一覧</h2>
+    <div class="emoney__new-link"><%= link_to "電子マネーを追加する", new_emoney_path %></div>
+    <div class="emoney__categories">
+      <% @categories.each do |category| %>
+        <section class="emoney__category">
+          <h4><%= link_to(category.name, category_path(category.id)) %></h4>
+          <%= render 'shared/emoneys', emoneys: category.emoneys %>
+        </section>
+      <% end %>
+    </div>
+  </div>
+</div>

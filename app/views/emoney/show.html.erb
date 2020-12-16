@@ -1,0 +1,35 @@
+<div class="emoney__wrapper">
+  <div class="emoney__container">
+    <h2><%= @emoney.name %></h2>
+    <span class="emoney__image"><%= desplay_image(@emoney) %></span>
+    <section class="emoney__information">
+      <dl>
+        <dt>カテゴリー</dt>
+        <dd>
+          <%= @emoney.category.name %>
+        </dd>
+      </dl>
+      <dl>
+        <dt>概要</dt>
+        <dd>
+          <%= @emoney.description %>
+        </dd>
+      </dl>
+      <% if @emoney.link %>
+      <dl>
+        <dt>公式リンク</dt>
+        <dd>
+          <%= link_to @emoney.link, @emoney.link, target: :_blank %>
+        </dd>
+      </dl>
+      <% end %>
+      <dl>
+        <dt>電子マネーを編集／削除する</dt>
+        <dd>
+          <%= link_to '編集する', edit_emoney_path(@emoney) %>／
+          <%= link_to '削除する', @emoney, method: :delete, data: { confirm: '本当に削除しますか？' } %>
+        </dd>
+      </dl>
+    </section>
+  </div>
+</div>

@@ -21,6 +21,14 @@ class ApplicationController < ActionController::Base
     @result = JSON.parse(json)
   end
 
+  def check_admin_user
+    redirect_to(root_path) unless user_signed_in? && current_user.admin?
+  end
+
+  def set_categories
+    @categories = Category.all
+  end
+
   protected
 
   def configure_permitted_parameters

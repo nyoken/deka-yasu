@@ -1,0 +1,10 @@
+<div class="emoney__items">
+  <% emoneys.each do |emoney| %>
+    <div class="emoney__item">
+      <%= link_to emoney_path(emoney) do %>
+        <%= emoney.name %>
+        <span><%= desplay_image(emoney) %></span>
+      <% end %>
+    </div>
+  <% end %>
+</div>

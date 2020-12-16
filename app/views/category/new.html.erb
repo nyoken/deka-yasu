@@ -1,0 +1,8 @@
+<div class="category__wrapper">
+  <div class="category__container">
+    <h2>カテゴリー追加</h2>
+    <p>追加したいカテゴリー名を入力し、追加ボタンを押してください。</p>
+    <%= render "form", category: @category, url: category_index_path %>
+    <%= render "categories", categories: @categories, class_name: "present", heading: "現在あるカテゴリー（クリックで編集）" %>
+  </div>
+</div>

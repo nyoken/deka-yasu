@@ -1,0 +1,53 @@
+@import "/mixins/common-mixins";
+
+.category {
+  &__wrapper {
+    @include static-wrapper;
+  }
+
+  &__container {
+    @include static-container;
+
+    h5 {
+      margin-top: 30px;
+    }
+
+    p {
+      margin-top: 20px;
+    }
+  }
+
+  // show, new, edit
+  &__others, &__present {
+    margin-top: 80px;
+
+    a {
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 0.8rem 2rem;
+      display: inline-block;
+      cursor: pointer;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      -webkit-transition: all 0.3s;
+      transition: all 0.3s;
+      text-decoration: none;
+      letter-spacing: 0.1em;
+      border-radius: 0.5rem;
+      color: #fff;
+      background-color: $orange;
+
+      &:hover {
+        color: #fff;
+        background: #f56500;
+      }
+    }
+  }
+
+  // edit
+  &__delete {
+    text-align: center;
+    margin-top: 25px;
+  }
+}

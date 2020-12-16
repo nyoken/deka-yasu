@@ -39,8 +39,13 @@ RSpec.configure do |config|
     driven_by :selenium_chrome_headless
   end
 
+  # テスト後に画像ファイルを削除
+  config.after(:all) do
+    FileUtils.rm_rf(Dir["#{Rails.root}/public/uploads_#{Rails.env}/"]) if Rails.env.test?
+  end
+
   # sign_inヘルパーをinclude
-  config.include Devise::Test::IntegrationHelpers, type: :system
+  config.include Devise::Test::IntegrationHelpers, type: :request
   # Factory_botのメソッドを使用する際に、クラス名の指定を省略できるようにする
   config.include FactoryBot::Syntax::Methods
 

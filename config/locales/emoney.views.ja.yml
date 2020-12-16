@@ -1,0 +1,11 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        category:
+          attributes:
+            name:
+              blank: "が入力されていません。"
+    attributes:
+      category:
+        name: "カテゴリー名"
