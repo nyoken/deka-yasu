@@ -13,7 +13,7 @@ RSpec.describe 'Emoneys', type: :system do
       emoney1
       emoney2
       visit root_path
-      click_link '電子マネー'
+      click_link '電子マネー紹介'
       expect(current_path).to eq emoney_index_path
       expect(page).to have_content('電子マネー一覧')
       expect(page).to have_content(emoney1.name)
@@ -32,7 +32,7 @@ RSpec.describe 'Emoneys', type: :system do
 
     it '一覧ページからemoneyの詳細ページに遷移し、詳細情報が表示されている' do
       visit root_path
-      click_link '電子マネー'
+      click_link '電子マネー紹介'
       click_link emoney1.name
       expect(current_path).to eq emoney_path(emoney1)
       find('h2') do
@@ -53,7 +53,7 @@ RSpec.describe 'Emoneys', type: :system do
       category1
       category2
       visit root_path
-      click_link '電子マネー'
+      click_link '電子マネー紹介'
       click_link '電子マネーを追加する'
       expect(current_path).to eq new_emoney_path
       expect(page).to have_content('電子マネー追加')

@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :category, class: Category do
-    name { "category" }
+    name { "category1" }
   end
 
   factory :category2, class: Category do

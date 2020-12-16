@@ -1,7 +1,7 @@
 <div class="category__wrapper">
   <div class="category__container">
     <h2>カテゴリー編集</h2>
-    <h4>選択したカテゴリー：<%= @category.name %></h4>
+    <h5>選択したカテゴリー：<%= @category.name %></h5>
     <p>カテゴリー名を修正し、更新ボタンを押してください。</p>
     <%= render "form", category: @category, url: category_path(@category) %>
     <div class="category__delete"><%= link_to "カテゴリーを削除する", @category, method: :delete, data: { confirm: '本当に削除しますか？' } %></div>
